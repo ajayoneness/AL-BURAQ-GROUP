@@ -1,0 +1,168 @@
+{% extends 'base.html' %}
+{% load static i18n %}
+
+{% block title %}{% trans "Contact Us" %} - AL BURAQ GROUP{% endblock %}
+
+{% block content %}
+<!-- Hero -->
+<section
+    style="padding: 150px 0 80px; background: linear-gradient(180deg, var(--bg-darker) 0%, var(--bg-dark) 100%); position: relative; overflow: hidden;">
+    <div class="container text-center">
+        <h1 class="mb-md" data-aos="fade-up">{% trans "Get in" %} <span class="text-gold">{% trans "Touch" %}</span>
+        </h1>
+        <p style="color: var(--text-secondary); max-width: 600px; margin: 0 auto;" data-aos="fade-up"
+            data-aos-delay="100">
+            {% trans "We'd love to hear from you. Reach out to us through any of the channels below." %}
+        </p>
+    </div>
+    <i class="fas fa-envelope"
+        style="position: absolute; right: -100px; bottom: -50px; font-size: 350px; opacity: 0.03; color: var(--gold-primary);"></i>
+</section>
+
+<!-- Contact Options -->
+<section class="section">
+    <div class="container">
+        <div class="grid grid-cols-3 gap-xl mb-2xl">
+            <!-- WhatsApp -->
+            <a href="https://wa.me/{{ COMPANY_WHATSAPP|slice:'1:' }}" target="_blank"
+                class="card card-glass text-center" style="padding: 2.5rem;" data-aos="fade-up">
+                <div
+                    style="width: 80px; height: 80px; background: #25D366; border-radius: var(--radius-xl); display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem;">
+                    <i class="fab fa-whatsapp" style="font-size: 2.5rem; color: white;"></i>
+                </div>
+                <h4 class="mb-sm">{% trans "WhatsApp" %}</h4>
+                <p style="color: var(--text-secondary); margin-bottom: 1rem;">{% trans "Chat with us instantly" %}</p>
+                <span style="color: var(--gold-light); font-weight: 600;">{{ COMPANY_WHATSAPP }}</span>
+            </a>
+
+            <!-- Email -->
+            <a href="mailto:{{ COMPANY_EMAIL }}" class="card card-glass text-center" style="padding: 2.5rem;"
+                data-aos="fade-up" data-aos-delay="100">
+                <div
+                    style="width: 80px; height: 80px; background: var(--gold-gradient); border-radius: var(--radius-xl); display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem;">
+                    <i class="fas fa-envelope" style="font-size: 2rem; color: var(--bg-dark);"></i>
+                </div>
+                <h4 class="mb-sm">{% trans "Email" %}</h4>
+                <p style="color: var(--text-secondary); margin-bottom: 1rem;">{% trans "Send us an email" %}</p>
+                <span style="color: var(--gold-light); font-weight: 600;">{{ COMPANY_EMAIL }}</span>
+            </a>
+
+            <!-- Phone -->
+            <a href="tel:{{ COMPANY_PHONE }}" class="card card-glass text-center" style="padding: 2.5rem;"
+                data-aos="fade-up" data-aos-delay="200">
+                <div
+                    style="width: 80px; height: 80px; background: linear-gradient(135deg, var(--teal) 0%, var(--teal-light) 100%); border-radius: var(--radius-xl); display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem;">
+                    <i class="fas fa-phone" style="font-size: 2rem; color: var(--bg-dark);"></i>
+                </div>
+                <h4 class="mb-sm">{% trans "Phone" %}</h4>
+                <p style="color: var(--text-secondary); margin-bottom: 1rem;">{% trans "Call us directly" %}</p>
+                <span style="color: var(--gold-light); font-weight: 600;">{{ COMPANY_PHONE }}</span>
+            </a>
+        </div>
+
+        <!-- Contact Form -->
+        <div class="flex gap-xl" style="flex-wrap: wrap;">
+            <div style="flex: 1.5; min-width: 400px;" data-aos="fade-right">
+                <div class="card" style="padding: 2.5rem;">
+                    <h3 class="mb-xl">{% trans "Send Us a Message" %}</h3>
+
+                    <form action="" method="POST">
+                        {% csrf_token %}
+                        <div class="grid grid-cols-2 gap-md">
+                            <div class="form-group">
+                                <label class="form-label">{% trans "Your Name" %} *</label>
+                                <input type="text" name="name" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">{% trans "Email" %} *</label>
+                                <input type="email" name="email" class="form-control" required>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-md">
+                            <div class="form-group">
+                                <label class="form-label">{% trans "Phone" %}</label>
+                                <input type="tel" name="phone" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">{% trans "Subject" %} *</label>
+                                <select name="subject" class="form-control" required>
+                                    <option value="">{% trans "Select a subject" %}</option>
+                                    <option value="general">{% trans "General Inquiry" %}</option>
+                                    <option value="sourcing">{% trans "Product Sourcing" %}</option>
+                                    <option value="shipping">{% trans "Shipping Quote" %}</option>
+                                    <option value="order">{% trans "Order Status" %}</option>
+                                    <option value="partnership">{% trans "Partnership" %}</option>
+                                    <option value="other">{% trans "Other" %}</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">{% trans "Your Message" %} *</label>
+                            <textarea name="message" class="form-control" rows="5" required
+                                placeholder="{% trans 'Tell us about your requirements...' %}"></textarea>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary btn-lg">
+                            <i class="fas fa-paper-plane"></i> {% trans "Send Message" %}
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Office Locations -->
+            <div style="flex: 1; min-width: 300px;" data-aos="fade-left">
+                <h3 class="mb-lg">{% trans "Our Offices" %}</h3>
+
+                <div class="card card-glass"
+                    style="padding: 1.5rem; margin-bottom: 1rem; border-left: 3px solid var(--gold-primary);">
+                    <h5 style="color: var(--gold-light); margin-bottom: 0.5rem;"><i class="fas fa-map-marker-alt"></i>
+                        Yiwu Office</h5>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem;">Room 1218, Elevator No. 3, Hengfeng
+                        Jiacheng Office Building, Choujiang North Street, Fotian Street, Yiwu City</p>
+                </div>
+
+                <div class="card card-glass"
+                    style="padding: 1.5rem; margin-bottom: 1rem; border-left: 3px solid var(--teal);">
+                    <h5 style="color: var(--teal); margin-bottom: 0.5rem;"><i class="fas fa-building"></i> Yiwu Showroom
+                    </h5>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem;">Room 3A01, 4th Floor, Building A, Futian
+                        Building, Yiwu City, Zhejiang Province</p>
+                </div>
+
+                <div class="card card-glass"
+                    style="padding: 1.5rem; margin-bottom: 1.5rem; border-left: 3px solid var(--purple);">
+                    <h5 style="color: var(--purple-light); margin-bottom: 0.5rem;"><i class="fas fa-city"></i> Guangzhou
+                        Office</h5>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem;">Unit 1902, East Tower, No. 59 Huali
+                        Road, Tianhe District, Guangzhou</p>
+                </div>
+
+                <!-- Social Media -->
+                <div class="card card-glass" style="padding: 1.5rem;">
+                    <h5 class="mb-md">{% trans "Follow Us" %}</h5>
+                    <div class="flex gap-md">
+                        <a href="{{ SOCIAL_LINKS_SETTINGS.facebook }}" target="_blank" class="btn btn-ghost btn-icon"
+                            style="background: #1877F2; color: white;">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="{{ SOCIAL_LINKS_SETTINGS.instagram }}" target="_blank" class="btn btn-ghost btn-icon"
+                            style="background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); color: white;">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="{{ SOCIAL_LINKS_SETTINGS.tiktok }}" target="_blank" class="btn btn-ghost btn-icon"
+                            style="background: #000; color: white;">
+                            <i class="fab fa-tiktok"></i>
+                        </a>
+                        <a href="{{ SOCIAL_LINKS_SETTINGS.youtube }}" target="_blank" class="btn btn-ghost btn-icon"
+                            style="background: #FF0000; color: white;">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

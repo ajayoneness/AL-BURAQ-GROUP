@@ -1,0 +1,243 @@
+{% extends 'base.html' %}
+{% load static i18n %}
+
+{% block title %}{{ product.name }} - AL BURAQ GROUP{% endblock %}
+
+{% block extra_css %}
+<style>
+    .product-gallery {
+        display: flex;
+        gap: 1rem;
+    }
+
+    .product-thumbs {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .product-thumb {
+        width: 80px;
+        height: 80px;
+        object-fit: cover;
+        border-radius: var(--radius-md);
+        cursor: pointer;
+        border: 2px solid transparent;
+        transition: all 0.3s ease;
+    }
+
+    .product-thumb:hover,
+    .product-thumb.active {
+        border-color: var(--gold-primary);
+    }
+
+    .product-main-image {
+        flex: 1;
+        height: 500px;
+        object-fit: cover;
+        border-radius: var(--radius-xl);
+    }
+
+    .quantity-control {
+        display: flex;
+        align-items: center;
+        gap: 0;
+        background: var(--bg-card);
+        border-radius: var(--radius-lg);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .quantity-btn {
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: transparent;
+        border: none;
+        color: var(--text-primary);
+        cursor: pointer;
+        transition: all 0.2s;
+    }
+
+    .quantity-btn:hover {
+        color: var(--gold-light);
+    }
+
+    .quantity-input {
+        width: 60px;
+        text-align: center;
+        background: transparent;
+        border: none;
+        color: var(--text-primary);
+        font-size: 1rem;
+        font-weight: 600;
+    }
+
+    .quantity-input:focus {
+        outline: none;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<!-- Breadcrumb -->
+<section style="padding: 130px 0 40px; background: var(--bg-darker);">
+    <div class="container">
+        <nav>
+            <a href="{% url 'store:category_list' %}" style="color: var(--text-secondary);">{% trans "Store" %}</a>
+            <span style="color: var(--text-muted); margin: 0 0.5rem;">/</span>
+            <a href="{% url 'store:category_detail' product.category.slug %}" style="color: var(--text-secondary);">{{
+                product.category.name }}</a>
+            <span style="color: var(--text-muted); margin: 0 0.5rem;">/</span>
+            <span style="color: var(--gold-light);">{{ product.name|truncatewords:5 }}</span>
+        </nav>
+    </div>
+</section>
+
+<!-- Product Details -->
+<section class="section">
+    <div class="container">
+        <div class="flex gap-xl" style="flex-wrap: wrap;">
+            <!-- Gallery -->
+            <div style="flex: 1; min-width: 400px;" data-aos="fade-right">
+                <div class="product-gallery">
+                    {% if product.images.count > 1 %}
+                    <div class="product-thumbs">
+                        {% for img in product.images.all %}
+                        <img src="{{ img.image.url }}" alt="{{ product.name }}"
+                            class="product-thumb {% if forloop.first %}active{% endif %}"
+                            data-image="{{ img.image.url }}">
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                    <div style="flex: 1;">
+                        {% if product.get_main_image %}
+                        <img src="{{ product.get_main_image.url }}" alt="{{ product.name }}" class="product-main-image"
+                            id="mainProductImage">
+                        {% else %}
+                        <div class="product-main-image"
+                            style="background: var(--bg-card); display: flex; align-items: center; justify-content: center;">
+                            <i class="fas fa-image" style="font-size: 5rem; color: var(--text-muted);"></i>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+
+            <!-- Info -->
+            <div style="flex: 1; min-width: 400px;" data-aos="fade-left">
+                <div class="badge badge-gold mb-md">{{ product.category.name }}</div>
+                <h1 style="font-size: 2rem; margin-bottom: 1rem;">{{ product.name }}</h1>
+
+                {% if product.sku %}
+                <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1.5rem;">SKU: {{ product.sku }}
+                </p>
+                {% endif %}
+
+                <div style="margin-bottom: 2rem;">
+                    <span style="font-size: 2.5rem; font-weight: 800; color: var(--gold-light);">¥{{ product.price_rmb }}</span>
+                    <span style="color: var(--text-secondary); font-size: 1rem;"> / {{ product.get_unit_display }}</span>
+                </div>
+
+                <div class="card card-glass" style="padding: 1.5rem; margin-bottom: 2rem;">
+                    <div class="flex justify-between mb-md">
+                        <span style="color: var(--text-secondary);">{% trans "Minimum Order" %}:</span>
+                        <span style="font-weight: 600;">{{ product.min_order_quantity }} {{ product.get_unit_display }}</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span style="color: var(--text-secondary);">{% trans "Availability" %}:</span>
+                        <span style="color: var(--success); font-weight: 600;">{% trans "In Stock" %}</span>
+                    </div>
+                </div>
+
+                <!-- Quantity & Add to Cart -->
+                <div class="flex gap-md items-center mb-xl">
+                    <div class="quantity-control">
+                        <button type="button" class="quantity-btn"
+                            onclick="updateQuantity(document.getElementById('qty'), -1)">
+                            <i class="fas fa-minus"></i>
+                        </button>
+                        <input type="number" id="qty" class="quantity-input" value="{{ product.min_order_quantity }}"
+                            min="{{ product.min_order_quantity }}">
+                        <button type="button" class="quantity-btn"
+                            onclick="updateQuantity(document.getElementById('qty'), 1)">
+                            <i class="fas fa-plus"></i>
+                        </button>
+                    </div>
+                    <button onclick="addToCart({{ product.pk }}, parseInt(document.getElementById('qty').value))"
+                        class="btn btn-primary btn-lg" style="flex: 1;">
+                        <i class="fas fa-cart-plus"></i> {% trans "Add to Cart" %}
+                    </button>
+                </div>
+
+                <!-- Quick Actions -->
+                <div class="flex gap-md">
+                    <a href="https://wa.me/{{ COMPANY_WHATSAPP|slice:'1:' }}?text={% trans 'I am interested in:' %} {{ product.name }}"
+                        target="_blank" class="btn btn-ghost"
+                        style="flex: 1; background: #25D366; color: white; border: none;">
+                        <i class="fab fa-whatsapp"></i> {% trans "Inquire on WhatsApp" %}
+                    </a>
+                </div>
+
+                <!-- Description -->
+                {% if product.description %}
+                <div style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1);">
+                    <h4 class="mb-md">{% trans "Description" %}</h4>
+                    <div style="color: var(--text-secondary); line-height: 1.8;">
+                        {{ product.description|linebreaks }}
+                    </div>
+                </div>
+                {% endif %}
+
+                {% if product.specifications %}
+                <div style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1);">
+                    <h4 class="mb-md">{% trans "Specifications" %}</h4>
+                    <div style="color: var(--text-secondary); line-height: 1.8;">
+                        {{ product.specifications|linebreaks }}
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Related Products -->
+{% if related_products %}
+<section class="section" style="background: var(--bg-darker);">
+    <div class="container">
+        <h2 class="mb-xl text-center">{% trans "Related Products" %}</h2>
+        <div class="grid grid-cols-4 gap-lg">
+            {% for prod in related_products %}
+            <div class="card" data-aos="fade-up" data-aos-delay="{{ forloop.counter0 }}50">
+                {% if prod.get_main_image %}
+                <img src="{{ prod.get_main_image.url }}" alt="{{ prod.name }}" class="card-image">
+                {% else %}
+                <div class="card-image"
+                    style="background: var(--bg-card-hover); display: flex; align-items: center; justify-content: center;">
+                    <i class="fas fa-image" style="font-size: 2rem; color: var(--text-muted);"></i>
+                </div>
+                {% endif %}
+                <div class="card-body">
+                    <h5 style="font-size: 0.95rem; margin-bottom: 0.5rem;">{{ prod.name|truncatewords:6 }}</h5>
+                    <span style="color: var(--gold-light); font-weight: 700;">¥{{ prod.price_rmb }}</span>
+                    <a href="{% url 'store:product_detail' prod.slug %}" class="btn btn-ghost btn-sm w-full mt-md">{%
+                        trans "View" %}</a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endif %}
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    // Initialize image gallery
+    document.addEventListener('DOMContentLoaded', function () {
+        initImageGallery();
+    });
+</script>
+{% endblock %}

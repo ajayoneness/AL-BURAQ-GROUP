@@ -1,0 +1,206 @@
+{% extends 'base.html' %}
+{% load static i18n %}
+
+{% block title %}{% trans "About Us" %} - AL BURAQ GROUP{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section
+    style="padding: 150px 0 80px; background: linear-gradient(180deg, var(--bg-darker) 0%, var(--bg-dark) 100%); position: relative; overflow: hidden;">
+    <div class="container text-center">
+        <h1 class="mb-md" data-aos="fade-up">{% trans "About" %} <span class="text-gold">AL BURAQ GROUP</span></h1>
+        <p style="color: var(--text-secondary); max-width: 600px; margin: 0 auto;" data-aos="fade-up"
+            data-aos-delay="100">
+            {% trans "Your trusted partner for international trade and logistics from China" %}
+        </p>
+    </div>
+    <i class="fas fa-globe"
+        style="position: absolute; right: -50px; bottom: -50px; font-size: 300px; opacity: 0.03; color: var(--gold-primary);"></i>
+</section>
+
+<!-- Company Story -->
+<section class="section">
+    <div class="container">
+        <div class="flex items-center gap-xl" style="flex-wrap: wrap;">
+            <div style="flex: 1; min-width: 300px;" data-aos="fade-right">
+                <div class="card card-glass" style="padding: 2rem;">
+                    <img src="{% static 'images/logo.jpeg' %}" alt="AL BURAQ GROUP"
+                        style="width: 150px; margin: 0 auto 2rem; display: block;">
+                    <div class="text-center">
+                        <h3 class="text-gold">{% trans "Established in China" %}</h3>
+                        <p style="color: var(--text-secondary);">{% trans "Over 10 Years of Excellence" %}</p>
+                    </div>
+                </div>
+            </div>
+            <div style="flex: 2; min-width: 400px;" data-aos="fade-left">
+                <h2 class="mb-lg">{% trans "Our Story" %}</h2>
+                <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">
+                    {% trans "AL BURAQ GROUP was founded with a vision to bridge the gap between Chinese manufacturers and international buyers. Named after the legendary creature known for its speed and reliability, we embody these qualities in every aspect of our service." %}
+                </p>
+                <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">
+                    {% trans "With offices strategically located in Yiwu and Guangzhou - two of China's largest trading hubs - we provide our clients with direct access to thousands of factories and suppliers." %}
+                </p>
+                <p style="color: var(--text-secondary);">
+                    {% trans "Our multilingual team speaks Arabic, English, Chinese, French, Turkish, Spanish, Italian, and Russian, ensuring smooth communication with clients from all over the world." %}
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Vision & Mission -->
+<section class="section" style="background: var(--bg-darker);">
+    <div class="container">
+        <div class="grid grid-cols-2 gap-xl">
+            <div class="card" style="padding: 2.5rem; border-top: 4px solid var(--gold-primary);" data-aos="fade-up">
+                <div
+                    style="width: 70px; height: 70px; background: var(--gold-gradient); border-radius: var(--radius-xl); display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem;">
+                    <i class="fas fa-eye" style="font-size: 1.8rem; color: var(--bg-dark);"></i>
+                </div>
+                <h3 class="mb-md">{% trans "Our Vision" %}</h3>
+                <p style="color: var(--text-secondary);">
+                    {% trans "To be the world's most trusted bridge between Chinese manufacturers and global businesses, setting the standard for quality, reliability, and customer service in international trade." %}
+                </p>
+            </div>
+
+            <div class="card" style="padding: 2.5rem; border-top: 4px solid var(--teal);" data-aos="fade-up"
+                data-aos-delay="100">
+                <div
+                    style="width: 70px; height: 70px; background: linear-gradient(135deg, var(--teal) 0%, var(--teal-light) 100%); border-radius: var(--radius-xl); display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem;">
+                    <i class="fas fa-bullseye" style="font-size: 1.8rem; color: var(--bg-dark);"></i>
+                </div>
+                <h3 class="mb-md">{% trans "Our Mission" %}</h3>
+                <p style="color: var(--text-secondary);">
+                    {% trans "To provide comprehensive trade solutions that empower businesses worldwide to source quality products from China with confidence, efficiency, and complete peace of mind." %}
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Core Values -->
+<section class="section">
+    <div class="container">
+        <div class="text-center mb-2xl">
+            <h2 class="mb-md" data-aos="fade-up">{% trans "Our Core" %} <span class="text-gold">{% trans "Values" %}</span></h2>
+        </div>
+
+        <div class="grid grid-cols-4 gap-lg">
+            <div class="text-center" data-aos="fade-up" data-aos-delay="100">
+                <div
+                    style="width: 80px; height: 80px; background: var(--bg-card); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; border: 2px solid var(--gold-primary);">
+                    <i class="fas fa-handshake" style="font-size: 2rem; color: var(--gold-light);"></i>
+                </div>
+                <h4 class="mb-sm">{% trans "Trust" %}</h4>
+                <p style="color: var(--text-secondary); font-size: 0.9rem;">{% trans "Building lasting relationships through honesty and integrity" %}</p>
+            </div>
+
+            <div class="text-center" data-aos="fade-up" data-aos-delay="200">
+                <div
+                    style="width: 80px; height: 80px; background: var(--bg-card); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; border: 2px solid var(--teal);">
+                    <i class="fas fa-gem" style="font-size: 2rem; color: var(--teal);"></i>
+                </div>
+                <h4 class="mb-sm">{% trans "Quality" %}</h4>
+                <p style="color: var(--text-secondary); font-size: 0.9rem;">{% trans "Uncompromising standards in every product we handle" %}</p>
+            </div>
+
+            <div class="text-center" data-aos="fade-up" data-aos-delay="300">
+                <div
+                    style="width: 80px; height: 80px; background: var(--bg-card); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; border: 2px solid var(--purple);">
+                    <i class="fas fa-rocket" style="font-size: 2rem; color: var(--purple);"></i>
+                </div>
+                <h4 class="mb-sm">{% trans "Innovation" %}</h4>
+                <p style="color: var(--text-secondary); font-size: 0.9rem;">{% trans "Continuously improving our processes and services" %}</p>
+            </div>
+
+            <div class="text-center" data-aos="fade-up" data-aos-delay="400">
+                <div
+                    style="width: 80px; height: 80px; background: var(--bg-card); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; border: 2px solid var(--success);">
+                    <i class="fas fa-globe-americas" style="font-size: 2rem; color: var(--success);"></i>
+                </div>
+                <h4 class="mb-sm">{% trans "Global Reach" %}</h4>
+                <p style="color: var(--text-secondary); font-size: 0.9rem;">{% trans "Serving clients in over 50 countries worldwide" %}</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Team Section -->
+<section class="section" style="background: var(--bg-darker);">
+    <div class="container">
+        <div class="text-center mb-2xl">
+            <h2 class="mb-md" data-aos="fade-up">{% trans "Our" %} <span class="text-gold">{% trans "Team" %}</span>
+            </h2>
+            <p style="color: var(--text-secondary); max-width: 600px; margin: 0 auto;" data-aos="fade-up"
+                data-aos-delay="100">
+                {% trans "Meet the dedicated professionals behind AL BURAQ GROUP" %}
+            </p>
+        </div>
+
+        <div class="grid grid-cols-3 gap-xl">
+            {% for member in team_members %}
+            <div class="card text-center" style="padding: 2rem;" data-aos="fade-up"
+                data-aos-delay="{{ forloop.counter0 }}00">
+                {% if member.image %}
+                <img src="{{ member.image.url }}" alt="{{ member.name }}"
+                    style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; margin: 0 auto 1.5rem; border: 3px solid var(--gold-primary);">
+                {% else %}
+                <div
+                    style="width: 120px; height: 120px; border-radius: 50%; background: var(--gold-gradient); margin: 0 auto 1.5rem; display: flex; align-items: center; justify-content: center;">
+                    <i class="fas fa-user" style="font-size: 3rem; color: var(--bg-dark);"></i>
+                </div>
+                {% endif %}
+                <h4>{{ member.name }}</h4>
+                <p style="color: var(--gold-light); font-size: 0.9rem; margin-bottom: 1rem;">{{ member.position }}</p>
+                <p style="color: var(--text-secondary); font-size: 0.9rem;">{{ member.bio|truncatewords:20 }}</p>
+            </div>
+            {% empty %}
+            <!-- Default team cards -->
+            <div class="card text-center" style="padding: 2rem;" data-aos="fade-up">
+                <div
+                    style="width: 120px; height: 120px; border-radius: 50%; background: var(--gold-gradient); margin: 0 auto 1.5rem; display: flex; align-items: center; justify-content: center;">
+                    <i class="fas fa-user" style="font-size: 3rem; color: var(--bg-dark);"></i>
+                </div>
+                <h4>{% trans "CEO & Founder" %}</h4>
+                <p style="color: var(--gold-light); font-size: 0.9rem; margin-bottom: 1rem;">{% trans "Chief Executive Officer" %}</p>
+                <p style="color: var(--text-secondary); font-size: 0.9rem;">{% trans "Leading AL BURAQ GROUP with vision and dedication to excellence in international trade." %}</p>
+            </div>
+
+            <div class="card text-center" style="padding: 2rem;" data-aos="fade-up" data-aos-delay="100">
+                <div
+                    style="width: 120px; height: 120px; border-radius: 50%; background: linear-gradient(135deg, var(--teal) 0%, var(--teal-light) 100%); margin: 0 auto 1.5rem; display: flex; align-items: center; justify-content: center;">
+                    <i class="fas fa-user" style="font-size: 3rem; color: var(--bg-dark);"></i>
+                </div>
+                <h4>{% trans "Operations Manager" %}</h4>
+                <p style="color: var(--teal); font-size: 0.9rem; margin-bottom: 1rem;">{% trans "Head of Operations" %}</p>
+                <p style="color: var(--text-secondary); font-size: 0.9rem;">{% trans "Ensuring smooth logistics and delivery for all our clients worldwide." %}</p>
+            </div>
+
+            <div class="card text-center" style="padding: 2rem;" data-aos="fade-up" data-aos-delay="200">
+                <div
+                    style="width: 120px; height: 120px; border-radius: 50%; background: linear-gradient(135deg, var(--purple) 0%, var(--purple-light) 100%); margin: 0 auto 1.5rem; display: flex; align-items: center; justify-content: center;">
+                    <i class="fas fa-user" style="font-size: 3rem; color: white;"></i>
+                </div>
+                <h4>{% trans "Sales Director" %}</h4>
+                <p style="color: var(--purple-light); font-size: 0.9rem; margin-bottom: 1rem;">{% trans "Head of Sales" %}</p>
+                <p style="color: var(--text-secondary); font-size: 0.9rem;">{% trans "Building relationships and connecting clients with the best suppliers in China." %}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="section" style="background: var(--gold-gradient);">
+    <div class="container text-center">
+        <h2 style="color: var(--bg-dark);" data-aos="fade-up">{% trans "Ready to Work With Us?" %}</h2>
+        <p style="color: var(--bg-dark); opacity: 0.8; margin-bottom: 2rem;" data-aos="fade-up" data-aos-delay="100">
+            {% trans "Contact our team today and let's discuss your sourcing needs." %}
+        </p>
+        <a href="{% url 'pages:contact' %}" class="btn" style="background: var(--bg-dark); color: var(--gold-light);"
+            data-aos="fade-up" data-aos-delay="200">
+            <i class="fas fa-envelope"></i> {% trans "Contact Us" %}
+        </a>
+    </div>
+</section>
+{% endblock %}

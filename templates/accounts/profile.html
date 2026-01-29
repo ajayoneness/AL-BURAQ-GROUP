@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% load static i18n %}
+
+{% block title %}{% trans "Edit Profile" %} - AL BURAQ GROUP{% endblock %}
+
+{% block content %}
+<!-- Header -->
+<section style="padding: 130px 0 40px; background: var(--bg-darker);">
+    <div class="container">
+        <h1 data-aos="fade-up"><i class="fas fa-user-edit" style="color: var(--gold-light);"></i>
+            {% trans "Edit Profile" %}</h1>
+    </div>
+</section>
+
+<!-- Profile Form -->
+<section class="section">
+    <div class="container" style="max-width: 700px;">
+        <div class="card" style="padding: 2.5rem;" data-aos="fade-up">
+            <form method="POST" action="{% url 'accounts:profile' %}">
+                {% csrf_token %}
+
+                <div class="grid grid-cols-2 gap-md">
+                    <div class="form-group">
+                        <label class="form-label">{% trans "First Name" %}</label>
+                        <input type="text" name="first_name" class="form-control" value="{{ user.first_name }}">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">{% trans "Last Name" %}</label>
+                        <input type="text" name="last_name" class="form-control" value="{{ user.last_name }}">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">{% trans "Email" %}</label>
+                    <input type="email" name="email" class="form-control" value="{{ user.email }}">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">{% trans "Phone" %}</label>
+                    <input type="tel" name="phone" class="form-control" value="{{ profile.phone|default:'' }}">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">{% trans "Company" %}</label>
+                    <input type="text" name="company" class="form-control" value="{{ profile.company|default:'' }}">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">{% trans "Country" %}</label>
+                    <input type="text" name="country" class="form-control" value="{{ profile.country|default:'' }}">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">{% trans "Address" %}</label>
+                    <textarea name="address" class="form-control" rows="3">{{ profile.address|default:'' }}</textarea>
+                </div>
+
+                <div class="flex gap-md">
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fas fa-save"></i> {% trans "Save Changes" %}
+                    </button>
+                    <a href="{% url 'accounts:dashboard' %}" class="btn btn-ghost">
+                        {% trans "Cancel" %}
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+{% endblock %}

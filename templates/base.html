@@ -1,0 +1,239 @@
+{% load static i18n %}
+<!DOCTYPE html>
+<html lang="{{ CURRENT_LANGUAGE }}" dir="{{ TEXT_DIR }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="{% block meta_description %}AL BURAQ GROUP - Your trusted partner for international trade, sourcing, and logistics from China to the world.{% endblock %}">
+    <meta name="keywords" content="AL BURAQ, China sourcing, international trade, logistics, shipping, import export, wholesale">
+    <meta name="author" content="AL BURAQ GROUP">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="{% block og_title %}AL BURAQ GROUP - International Trade & Logistics{% endblock %}">
+    <meta property="og:description" content="Your trusted partner for international trade, sourcing, and logistics from China.">
+    <meta property="og:image" content="{% static 'images/logo.jpeg' %}">
+    <meta property="og:type" content="website">
+    
+    <title>{% block title %}AL BURAQ GROUP{% endblock %}</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/jpeg" href="{% static 'images/logo.jpeg' %}">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- AOS Animations -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Base CSS -->
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="container navbar-container">
+            <!-- Brand -->
+            <a href="{% url 'core:home' %}" class="navbar-brand">
+                <img src="{% static 'images/logo.jpeg' %}" alt="AL BURAQ GROUP">
+                <span class="hidden-mobile">AL BURAQ</span>
+            </a>
+            
+            <!-- Navigation Links -->
+            <ul class="navbar-nav" id="navbarNav">
+                <li><a href="{% url 'core:home' %}" class="nav-link {% if request.resolver_match.url_name == 'home' %}active{% endif %}">{% trans "Home" %}</a></li>
+                <li><a href="{% url 'pages:about' %}" class="nav-link {% if request.resolver_match.url_name == 'about' %}active{% endif %}">{% trans "About Us" %}</a></li>
+                <li><a href="{% url 'pages:services' %}" class="nav-link {% if request.resolver_match.url_name == 'services' %}active{% endif %}">{% trans "Services" %}</a></li>
+                <li><a href="{% url 'store:category_list' %}" class="nav-link {% if 'store' in request.path %}active{% endif %}">{% trans "Store" %}</a></li>
+                <li><a href="{% url 'tracking:tracking' %}" class="nav-link {% if 'tracking' in request.path %}active{% endif %}">{% trans "Tracking" %}</a></li>
+                <li><a href="{% url 'faq:faq_list' %}" class="nav-link {% if 'faq' in request.path %}active{% endif %}">{% trans "FAQ" %}</a></li>
+                <li><a href="{% url 'pages:contact' %}" class="nav-link {% if request.resolver_match.url_name == 'contact' %}active{% endif %}">{% trans "Contact" %}</a></li>
+            </ul>
+            
+            <!-- Actions -->
+            <div class="navbar-actions">
+                <!-- Language Switcher -->
+                <div class="language-switcher">
+                    <select id="languageSelect" onchange="changeLanguage(this.value)">
+                        {% for code, name in LANGUAGES %}
+                            <option value="{{ code }}" {% if code == CURRENT_LANGUAGE %}selected{% endif %}>{{ name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                
+                <!-- Cart -->
+                <a href="{% url 'orders:cart' %}" class="btn btn-ghost cart-btn">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-badge" id="cartBadge">0</span>
+                </a>
+                
+                <!-- User -->
+                {% if user.is_authenticated %}
+                    <a href="{% url 'accounts:dashboard' %}" class="btn btn-ghost">
+                        <i class="fas fa-user"></i>
+                    </a>
+                {% else %}
+                    <a href="{% url 'accounts:login' %}" class="btn btn-primary btn-sm">{% trans "Login" %}</a>
+                {% endif %}
+                
+                <!-- Mobile Menu Toggle -->
+                <button class="menu-toggle" id="menuToggle" onclick="toggleMenu()">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Messages -->
+    {% if messages %}
+    <div class="messages-container" style="position: fixed; top: 90px; right: 20px; z-index: 1000; max-width: 400px;">
+        {% for message in messages %}
+        <div class="alert alert-{{ message.tags }}" style="margin-bottom: 10px;">
+            {{ message }}
+            <button onclick="this.parentElement.remove()" style="float: right; background: none; border: none; color: inherit; cursor: pointer;">&times;</button>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
+    
+    <!-- Main Content -->
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <!-- Brand Column -->
+                <div class="footer-col">
+                    <div class="footer-brand">
+                        <img src="{% static 'images/logo.jpeg' %}" alt="AL BURAQ GROUP">
+                        <p>{% trans "Your trusted partner for international trade, sourcing, and logistics from China to the world." %}</p>
+                    </div>
+                    <div class="footer-social">
+                        <a href="{{ SOCIAL_LINKS_SETTINGS.facebook }}" target="_blank" rel="noopener"><i class="fab fa-facebook-f"></i></a>
+                        <a href="{{ SOCIAL_LINKS_SETTINGS.instagram }}" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
+                        <a href="{{ SOCIAL_LINKS_SETTINGS.tiktok }}" target="_blank" rel="noopener"><i class="fab fa-tiktok"></i></a>
+                        <a href="{{ SOCIAL_LINKS_SETTINGS.youtube }}" target="_blank" rel="noopener"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <!-- Quick Links -->
+                <div class="footer-col">
+                    <h4 class="footer-title">{% trans "Quick Links" %}</h4>
+                    <div class="footer-links">
+                        <a href="{% url 'core:home' %}">{% trans "Home" %}</a>
+                        <a href="{% url 'pages:about' %}">{% trans "About Us" %}</a>
+                        <a href="{% url 'pages:services' %}">{% trans "Services" %}</a>
+                        <a href="{% url 'store:category_list' %}">{% trans "Store" %}</a>
+                    </div>
+                </div>
+                
+                <!-- Services -->
+                <div class="footer-col">
+                    <h4 class="footer-title">{% trans "Services" %}</h4>
+                    <div class="footer-links">
+                        <a href="#">{% trans "Air Shipping" %}</a>
+                        <a href="#">{% trans "Sea Shipping" %}</a>
+                        <a href="#">{% trans "Land Shipping" %}</a>
+                        <a href="#">{% trans "Sourcing" %}</a>
+                    </div>
+                </div>
+                
+                <!-- Contact -->
+                <div class="footer-col">
+                    <h4 class="footer-title">{% trans "Contact Us" %}</h4>
+                    <div class="footer-links">
+                        <a href="mailto:{{ COMPANY_EMAIL }}"><i class="fas fa-envelope"></i> {{ COMPANY_EMAIL }}</a>
+                        <a href="tel:{{ COMPANY_PHONE }}"><i class="fas fa-phone"></i> {{ COMPANY_PHONE }}</a>
+                        <a href="https://wa.me/{{ COMPANY_WHATSAPP|slice:'1:' }}" target="_blank"><i class="fab fa-whatsapp"></i> {% trans "WhatsApp" %}</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; {% now "Y" %} {{ COMPANY_NAME }}. {% trans "All rights reserved." %}</p>
+                <p>{% trans "Made with" %} <span style="color: #E6B74F;">❤</span> {% trans "in China" %}</p>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/{{ COMPANY_WHATSAPP|slice:'1:' }}" target="_blank" class="whatsapp-float" title="{% trans 'Chat on WhatsApp' %}">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+    
+    <!-- Scripts -->
+    <!-- AOS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <!-- GSAP for animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- Main JS -->
+    <script src="{% static 'js/main.js' %}"></script>
+    
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 100,
+        });
+        
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+        
+        // Mobile menu toggle
+        function toggleMenu() {
+            document.getElementById('navbarNav').classList.toggle('active');
+        }
+        
+        // Language change
+        function changeLanguage(lang) {
+            window.location.href = "{% url 'core:set_language' %}?lang=" + lang + "&next=" + window.location.pathname;
+        }
+        
+        // Update cart badge
+        function updateCartBadge() {
+            fetch('{% url "orders:cart_count" %}')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('cartBadge').textContent = data.count;
+                });
+        }
+        
+        // Initial cart badge update
+        updateCartBadge();
+        
+        // Auto-hide messages
+        setTimeout(() => {
+            document.querySelectorAll('.messages-container .alert').forEach(el => {
+                el.style.opacity = '0';
+                setTimeout(() => el.remove(), 300);
+            });
+        }, 5000);
+    </script>
+    
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

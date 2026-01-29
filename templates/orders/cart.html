@@ -1,0 +1,156 @@
+{% extends 'base.html' %}
+{% load static i18n %}
+
+{% block title %}{% trans "Shopping Cart" %} - AL BURAQ GROUP{% endblock %}
+
+{% block content %}
+<!-- Header -->
+<section style="padding: 130px 0 40px; background: var(--bg-darker);">
+    <div class="container">
+        <h1 data-aos="fade-up"><i class="fas fa-shopping-cart" style="color: var(--gold-light);"></i> {% trans "Shopping Cart" %}</h1>
+    </div>
+</section>
+
+<!-- Cart Content -->
+<section class="section">
+    <div class="container">
+        {% if cart and cart.items.count > 0 %}
+        <div class="flex gap-xl" style="flex-wrap: wrap; align-items: flex-start;">
+            <!-- Cart Items -->
+            <div style="flex: 2; min-width: 400px;">
+                {% for item in cart.items.all %}
+                <div class="card" style="padding: 1.5rem; margin-bottom: 1rem;" data-aos="fade-up"
+                    id="cart-item-{{ item.pk }}">
+                    <div class="flex gap-lg" style="flex-wrap: wrap;">
+                        {% if item.product.get_main_image %}
+                        <img src="{{ item.product.get_main_image.url }}" alt="{{ item.product.name }}"
+                            style="width: 100px; height: 100px; object-fit: cover; border-radius: var(--radius-md);">
+                        {% else %}
+                        <div
+                            style="width: 100px; height: 100px; background: var(--bg-card-hover); border-radius: var(--radius-md); display: flex; align-items: center; justify-content: center;">
+                            <i class="fas fa-image" style="color: var(--text-muted);"></i>
+                        </div>
+                        {% endif %}
+
+                        <div style="flex: 1;">
+                            <a href="{% url 'store:product_detail' item.product.slug %}" style="font-weight: 600;">
+                                {{ item.product.name }}</a>
+                            <p style="color: var(--text-muted); font-size: 0.85rem;">{{ item.product.category.name }}
+                            </p>
+                            <p style="color: var(--gold-light); font-weight: 600; margin-top: 0.5rem;">
+                                {{ item.product.price_rmb }} / {{ item.product.get_unit_display }}</p>
+                        </div>
+
+                        <div class="flex items-center gap-md">
+                            <div class="quantity-control"
+                                style="display: flex; align-items: center; background: var(--bg-card-hover); border-radius: var(--radius-md);">
+                                <button onclick="updateCartItem({{ item.pk }}, {{ item.quantity }} - 1)"
+                                    class="btn btn-ghost btn-sm"><i class="fas fa-minus"></i></button>
+                                <span style="padding: 0 1rem; font-weight: 600;">{{ item.quantity }}</span>
+                                <button onclick="updateCartItem({{ item.pk }}, {{ item.quantity }} + 1)"
+                                    class="btn btn-ghost btn-sm"><i class="fas fa-plus"></i></button>
+                            </div>
+
+                            <div style="min-width: 100px; text-align: right;">
+                                <p style="font-weight: 700; color: var(--gold-light);">¥{{ item.get_total }}</p>
+                            </div>
+
+                            <button onclick="removeFromCart({{ item.pk }})" class="btn btn-ghost"
+                                style="color: var(--error);">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+
+                <a href="{% url 'store:category_list' %}" class="btn btn-ghost mt-lg">
+                    <i class="fas fa-arrow-left"></i> {% trans "Continue Shopping" %}
+                </a>
+            </div>
+
+            <!-- Order Summary -->
+            <div style="flex: 1; min-width: 300px;">
+                <div class="card card-glass" style="padding: 2rem; position: sticky; top: 100px;" data-aos="fade-left">
+                    <h3 class="mb-lg">{% trans "Order Summary" %}</h3>
+
+                    <div class="flex justify-between mb-md">
+                        <span style="color: var(--text-secondary);">{% trans "Items" %}:</span>
+                        <span>{{ cart.items.count }}</span>
+                    </div>
+
+                    <div class="flex justify-between mb-lg"
+                        style="padding-bottom: 1rem; border-bottom: 1px solid rgba(255,255,255,0.1);">
+                        <span style="color: var(--text-secondary);">{% trans "Subtotal" %}:</span>
+                        <span style="font-weight: 600;">¥{{ cart.get_total }}</span>
+                    </div>
+
+                    <div class="alert alert-info" style="font-size: 0.85rem; margin-bottom: 1.5rem;">
+                        <i class="fas fa-info-circle"></i> {% trans "Shipping costs will be calculated after checkout." %}
+                    </div>
+
+                    <a href="{% url 'orders:checkout' %}" class="btn btn-primary w-full btn-lg">
+                        <i class="fas fa-credit-card"></i> {% trans "Proceed to Checkout" %}
+                    </a>
+
+                    <div
+                        style="margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.1); text-align: center;">
+                        <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 0.5rem;">
+                            {% trans "Or inquire directly:" %}</p>
+                        <a href="https://wa.me/{{ COMPANY_WHATSAPP|slice:'1:' }}?text={% trans 'I would like to place an order' %}"
+                            class="btn btn-ghost w-full" style="background: #25D366; color: white; border: none;">
+                            <i class="fab fa-whatsapp"></i> {% trans "Order via WhatsApp" %}
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% else %}
+        <div class="text-center" style="padding: 5rem;">
+            <i class="fas fa-shopping-cart" style="font-size: 5rem; color: var(--text-muted); margin-bottom: 2rem;"></i>
+            <h2 style="color: var(--text-muted); margin-bottom: 1rem;">{% trans "Your cart is empty" %}</h2>
+            <p style="color: var(--text-muted); margin-bottom: 2rem;">{% trans "Browse our products and add items to your cart." %}</p>
+            <a href="{% url 'store:category_list' %}" class="btn btn-primary btn-lg">
+                <i class="fas fa-shopping-bag"></i> {% trans "Browse Products" %}
+            </a>
+        </div>
+        {% endif %}
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    async function updateCartItem(itemId, quantity) {
+        if (quantity < 1) {
+            removeFromCart(itemId);
+            return;
+        }
+
+        const result = await Cart.update(itemId, quantity);
+        if (result && result.success) {
+            location.reload();
+        }
+    }
+
+    async function removeFromCart(itemId) {
+        if (!confirm('{% trans "Remove this item from cart?" %}')) return;
+
+        const result = await Cart.remove(itemId);
+        if (result && result.success) {
+            const item = document.getElementById('cart-item-' + itemId);
+            if (item) {
+                item.style.opacity = '0';
+                setTimeout(() => {
+                    item.remove();
+                    if (document.querySelectorAll('[id^="cart-item-"]').length === 0) {
+                        location.reload();
+                    }
+                }, 300);
+            } else {
+                location.reload();
+            }
+        }
+    }
+</script>
+{% endblock %}

@@ -1,0 +1,106 @@
+@logo.jpeg 
+
+AL BURAQ GROUP – Website Project Description & Instructions
+
+PROJECT DESCRIPTION
+
+This project is a multilingual corporate and wholesale e-commerce website for AL BURAQ GROUP, a company specialized in international trade, sourcing, and logistics from China to the world.
+
+The website aims to present the company in a professional, modern, and trustworthy way, highlighting its experience, services, offices, and success stories, while also providing a functional store and tracking system for clients.
+
+The main goal is to build a high-end, scalable, multilingual platform connected to a CMS (Strapi) that allows full control over content, categories, products, tracking updates, FAQs, and translations without touching the code.
+
+--------------------------------------------
+
+MAIN FEATURES & INSTRUCTIONS
+
+1. Multilingual System
+- Default language: Arabic
+- Supported languages:
+  Arabic, English, French, Chinese, Turkish, Spanish, Italian, Russian
+- All website content must change dynamically based on selected language.
+- Dynamic content translations are managed from the CMS.
+
+2. Home Page
+- Strong premium hero section
+- Animated company logo
+- Introduction text about the company
+- Offices locations (Yiwu Showroom, Yiwu Office, Guangzhou Office)
+- Contact details and social media links
+- Floating WhatsApp button
+- Footer with quick links
+
+3. About Us Page
+- Modern design with logistics and trade background images
+- Company overview (history, vision, values)
+- Founders team section with images and descriptions
+
+4. Services Page
+- Modern cards for each service:
+  Air Shipping, Sea Shipping, Land Shipping (Trains), Sourcing & Purchasing,
+  Assembly & Packing, Documentation & Customs, Quality Control, Mechanism of Action, Success Stories
+- Each service has a detailed page with background images and call-to-action.
+
+5. FAQ Page
+- Frequently asked questions displayed in a modern accordion style
+- Fully manageable from CMS (questions & answers)
+
+6. Store
+- Modern category cards with images
+- Categories and products managed from CMS
+- Products include name, description, images, and price (RMB)
+- Shopping cart system
+- Checkout redirects to WhatsApp with order details
+
+7. User Accounts
+- Registration and login system
+- Each client has a personal dashboard
+- View orders, tracking history, and personal data
+
+8. Tracking System
+- Dedicated tracking page
+- Tracking number based search
+- Shipment statuses updated from admin panel
+- Real-time status display for clients
+
+9. CMS (Admin Panel)
+- Manage categories, products, images, prices
+- Manage translations
+- Manage FAQs and tracking updates
+- Multiple admin roles
+
+FINAL GOAL
+
+Create a professional, fast, multilingual website that represents AL BURAQ GROUP as a trusted international trading and logistics company, while offering advanced client services and shipment tracking.
+Order Collection & WhatsApp Excel Workflow
+When a user browses the Store and adds multiple products from different categories (for example perfumes, accessories, cartons, etc.), the website will not process online payments.
+
+Instead, once the user clicks the 'Done' or 'Submit Order' button:
+- The system automatically generates an Excel file.
+- The Excel file contains full order details, including:
+  • Category name
+  • Product name
+  • Quantity (pieces or cartons)
+  • Unit price (RMB)
+  • Total per item
+  • Overall order summary
+
+After the Excel file is generated:
+- The user is redirected automatically to WhatsApp.
+- The Excel file is sent directly to the official AL BURAQ WhatsApp number.
+- The sales team receives the order instantly and contacts the client to finalize pricing, shipping, and confirmation.
+
+This approach ensures flexibility, fast communication, and avoids online payment complexity, while keeping all orders structured and professional.
+
+Email : alburaqgroupcn@gmail.com
+Phone no. : +8619557959148
+https://www.tiktok.com/@alburaqgroup 
+https://www.instagram.com/alburaq.cn/ 
+https://www.youtube.com/@alburaqcn 
+https://www.facebook.com/profile.php?id=61578631592555 
+
+use brnad color from this image @color.jpeg 
+
+make it using python django
+UI should be very beautiful and intractive 
+use  chat.js and these type of js cdn for make the ui more beautiful and intractive

@@ -1,0 +1,221 @@
+{% extends 'base.html' %}
+{% load static i18n %}
+
+{% block title %}{% trans "Services" %} - AL BURAQ GROUP{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section style="padding: 150px 0 80px; background: linear-gradient(180deg, var(--bg-darker) 0%, var(--bg-dark) 100%);">
+    <div class="container text-center">
+        <h1 class="mb-md" data-aos="fade-up">{% trans "Our" %} <span class="text-gold">{% trans "Services" %}</span>
+        </h1>
+        <p style="color: var(--text-secondary); max-width: 600px; margin: 0 auto;" data-aos="fade-up"
+            data-aos-delay="100">
+            {% trans "Comprehensive trade and logistics solutions for your business" %}
+        </p>
+    </div>
+</section>
+
+<!-- Services Grid -->
+<section class="section">
+    <div class="container">
+        <div class="grid grid-cols-3 gap-xl">
+            <!-- Air Shipping -->
+            <div class="card" style="overflow: hidden;" data-aos="fade-up">
+                <div
+                    style="height: 200px; background: linear-gradient(135deg, #3B82F6 0%, #1D4ED8 100%); display: flex; align-items: center; justify-content: center;">
+                    <i class="fas fa-plane" style="font-size: 5rem; color: white; opacity: 0.9;"></i>
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">{% trans "Air Shipping" %}</h3>
+                    <p class="card-text mb-md">{% trans "Fast and reliable air freight services for time-sensitive shipments. Ideal for urgent orders and high-value goods that need quick delivery worldwide." %}
+                    </p>
+                    <ul style="color: var(--text-secondary); font-size: 0.9rem;">
+                        <li><i class="fas fa-check" style="color: var(--gold-light); margin-right: 0.5rem;"></i> 
+                            {% trans "Delivery in 3-7 days" %}</li>
+                        <li><i class="fas fa-check" style="color: var(--gold-light); margin-right: 0.5rem;"></i> 
+                            {% trans "Door-to-door service" %}</li>
+                        <li><i class="fas fa-check" style="color: var(--gold-light); margin-right: 0.5rem;"></i> 
+                            {% trans "Real-time tracking" %}</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Sea Shipping -->
+            <div class="card" style="overflow: hidden;" data-aos="fade-up" data-aos-delay="100">
+                <div
+                    style="height: 200px; background: linear-gradient(135deg, var(--teal) 0%, #059669 100%); display: flex; align-items: center; justify-content: center;">
+                    <i class="fas fa-ship" style="font-size: 5rem; color: white; opacity: 0.9;"></i>
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">{% trans "Sea Shipping" %}</h3>
+                    <p class="card-text mb-md">{% trans "Cost-effective ocean freight for bulk shipments. Perfect for large orders where time is flexible but cost efficiency is paramount." %}</p>
+                    <ul style="color: var(--text-secondary); font-size: 0.9rem;">
+                        <li><i class="fas fa-check" style="color: var(--gold-light); margin-right: 0.5rem;"></i> 
+                            {% trans "FCL & LCL options" %}</li>
+                        <li><i class="fas fa-check" style="color: var(--gold-light); margin-right: 0.5rem;"></i> 
+                            {% trans "Major ports worldwide" %}</li>
+                        <li><i class="fas fa-check" style="color: var(--gold-light); margin-right: 0.5rem;"></i> 
+                            {% trans "Competitive rates" %}</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Land Shipping -->
+            <div class="card" style="overflow: hidden;" data-aos="fade-up" data-aos-delay="200">
+                <div
+                    style="height: 200px; background: linear-gradient(135deg, var(--purple) 0%, #7C3AED 100%); display: flex; align-items: center; justify-content: center;">
+                    <i class="fas fa-train" style="font-size: 5rem; color: white; opacity: 0.9;"></i>
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">{% trans "Land Shipping" %}</h3>
+                    <p class="card-text mb-md">{% trans "Rail and road freight connecting China to Central Asia, Middle East, and Europe via the Belt and Road routes." %}</p>
+                    <ul style="color: var(--text-secondary); font-size: 0.9rem;">
+                        <li><i class="fas fa-check" style="color: var(--gold-light); margin-right: 0.5rem;"></i> 
+                            {% trans "China-Europe Express" %}</li>
+                        <li><i class="fas fa-check" style="color: var(--gold-light); margin-right: 0.5rem;"></i> 
+                            {% trans "Faster than sea freight" %}</li>
+                        <li><i class="fas fa-check" style="color: var(--gold-light); margin-right: 0.5rem;"></i> 
+                            {% trans "Regular departures" %}</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Sourcing -->
+            <div class="card" style="overflow: hidden;" data-aos="fade-up">
+                <div
+                    style="height: 200px; background: linear-gradient(135deg, var(--gold-primary) 0%, var(--gold-light) 100%); display: flex; align-items: center; justify-content: center;">
+                    <i class="fas fa-search-dollar" style="font-size: 5rem; color: var(--bg-dark); opacity: 0.9;"></i>
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">{% trans "Sourcing & Purchasing" %}</h3>
+                    <p class="card-text mb-md">{% trans "Expert product sourcing from verified Chinese manufacturers. We find the best suppliers and negotiate the best prices for you." %}</p>
+                    <ul style="color: var(--text-secondary); font-size: 0.9rem;">
+                        <li><i class="fas fa-check" style="color: var(--gold-light); margin-right: 0.5rem;"></i> 
+                            {% trans "Factory verification" %}</li>
+                        <li><i class="fas fa-check" style="color: var(--gold-light); margin-right: 0.5rem;"></i> 
+                            {% trans "Price negotiation" %}</li>
+                        <li><i class="fas fa-check" style="color: var(--gold-light); margin-right: 0.5rem;"></i> 
+                            {% trans "Sample management" %}</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Quality Control -->
+            <div class="card" style="overflow: hidden;" data-aos="fade-up" data-aos-delay="100">
+                <div
+                    style="height: 200px; background: linear-gradient(135deg, #10B981 0%, #059669 100%); display: flex; align-items: center; justify-content: center;">
+                    <i class="fas fa-check-circle" style="font-size: 5rem; color: white; opacity: 0.9;"></i>
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">{% trans "Quality Control" %}</h3>
+                    <p class="card-text mb-md">{% trans "Rigorous quality inspection at every stage. Our QC team ensures     products meet your specifications before shipping." %}</p>
+                    <ul style="color: var(--text-secondary); font-size: 0.9rem;">
+                        <li><i class="fas fa-check" style="color: var(--gold-light); margin-right: 0.5rem;"></i> 
+                            {% trans "Pre-shipment inspection" %}</li>
+                        <li><i class="fas fa-check" style="color: var(--gold-light); margin-right: 0.5rem;"></i> 
+                            {% trans "Detailed reports" %}</li>
+                            <li><i class="fas fa-check" style="color: var(--gold-light); margin-right: 0.5rem;"></i> 
+                            {% trans "Photo documentation" %}</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Packing -->
+            <div class="card" style="overflow: hidden;" data-aos="fade-up" data-aos-delay="200">
+                <div
+                    style="height: 200px; background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%); display: flex; align-items: center; justify-content: center;">
+                    <i class="fas fa-box" style="font-size: 5rem; color: white; opacity: 0.9;"></i>
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">{% trans "Assembly & Packing" %}</h3>
+                    <p class="card-text mb-md">{% trans "Professional packaging and assembly services. We consolidate products from multiple suppliers and pack according to your requirements." %}</p>
+                    <ul style="color: var(--text-secondary); font-size: 0.9rem;">
+                        <li><i class="fas fa-check" style="color: var(--gold-light); margin-right: 0.5rem;"></i> 
+                            {% trans "Custom packaging" %}</li>
+                        <li><i class="fas fa-check" style="color: var(--gold-light); margin-right: 0.5rem;"></i> 
+                            {% trans "Labeling & branding" %}</li>
+                        <li><i class="fas fa-check" style="color: var(--gold-light); margin-right: 0.5rem;"></i> 
+                            {% trans "Consolidation" %}</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Documentation -->
+            <div class="card" style="overflow: hidden;" data-aos="fade-up">
+                <div
+                    style="height: 200px; background: linear-gradient(135deg, #6366F1 0%, #4F46E5 100%); display: flex; align-items: center; justify-content: center;">
+                    <i class="fas fa-file-alt" style="font-size: 5rem; color: white; opacity: 0.9;"></i>
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">{% trans "Documentation & Customs" %}</h3>
+                    <p class="card-text mb-md">{% trans "Complete customs clearance and documentation handling. We   navigate complex regulations so you don't have to." %}</p>
+                    <ul style="color: var(--text-secondary); font-size: 0.9rem;">
+                        <li><i class="fas fa-check" style="color: var(--gold-light); margin-right: 0.5rem;"></i> 
+                            {% trans "Export documentation" %}</li>
+                        <li><i class="fas fa-check" style="color: var(--gold-light); margin-right: 0.5rem;"></i> 
+                            {% trans "Customs clearance" %}</li>
+                        <li><i class="fas fa-check" style="color: var(--gold-light); margin-right: 0.5rem;"></i> 
+                            {% trans "Compliance consulting" %}</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Mechanism of Action -->
+            <div class="card" style="overflow: hidden;" data-aos="fade-up" data-aos-delay="100">
+                <div
+                    style="height: 200px; background: linear-gradient(135deg, #EC4899 0%, #DB2777 100%); display: flex; align-items: center; justify-content: center;">
+                    <i class="fas fa-cogs" style="font-size: 5rem; color: white; opacity: 0.9;"></i>
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">{% trans "Mechanism of Action" %}</h3>
+                    <p class="card-text mb-md">{% trans "A streamlined process from order to delivery. We handle every step of your import journey with precision and care." %}</p>
+                    <ul style="color: var(--text-secondary); font-size: 0.9rem;">
+                        <li><i class="fas fa-check" style="color: var(--gold-light); margin-right: 0.5rem;"></i> 
+                            {% trans "End-to-end management" %}</li>
+                        <li><i class="fas fa-check" style="color: var(--gold-light); margin-right: 0.5rem;"></i> 
+                            {% trans "Regular updates" %}</li>
+                        <li><i class="fas fa-check" style="color: var(--gold-light); margin-right: 0.5rem;"></i> 
+                            {% trans "Dedicated support" %}</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Success Stories -->
+            <div class="card" style="overflow: hidden;" data-aos="fade-up" data-aos-delay="200">
+                <div
+                    style="height: 200px; background: linear-gradient(135deg, #06B6D4 0%, #0891B2 100%); display: flex; align-items: center; justify-content: center;">
+                    <i class="fas fa-trophy" style="font-size: 5rem; color: white; opacity: 0.9;"></i>
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">{% trans "Success Stories" %}</h3>
+                    <p class="card-text mb-md">{% trans "Join hundreds of satisfied clients who have grown their businesses with AL BURAQ GROUP. Our track record speaks for itself." %}</p>
+                    <a href="{% url 'pages:success_stories' %}" class="btn btn-secondary btn-sm mt-md">
+                        {% trans "View Case Studies" %} <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="section" style="background: var(--gold-gradient);">
+    <div class="container text-center">
+        <h2 style="color: var(--bg-dark);" data-aos="fade-up">{% trans "Need a Custom Solution?" %}</h2>
+        <p style="color: var(--bg-dark); opacity: 0.8; margin-bottom: 2rem;" data-aos="fade-up" data-aos-delay="100">
+            {% trans "Contact us to discuss your specific requirements and get a tailored quote." %}
+        </p>
+        <div class="flex justify-center gap-md" style="flex-wrap: wrap;" data-aos="fade-up" data-aos-delay="200">
+            <a href="{% url 'pages:contact' %}" class="btn"
+                style="background: var(--bg-dark); color: var(--gold-light);">
+                <i class="fas fa-envelope"></i> {% trans "Get a Quote" %}
+            </a>
+            <a href="https://wa.me/{{ COMPANY_WHATSAPP|slice:'1:' }}" class="btn"
+                style="background: white; color: var(--bg-dark);">
+                <i class="fab fa-whatsapp"></i> {% trans "Chat on WhatsApp" %}
+            </a>
+        </div>
+    </div>
+</section>
+{% endblock %}

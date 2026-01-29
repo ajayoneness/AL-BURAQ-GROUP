@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+{% load static i18n %}
+
+{% block title %}{% trans "Register" %} - AL BURAQ GROUP{% endblock %}
+
+{% block content %}
+<section class="min-h-screen flex items-center justify-center" style="padding: 120px 0;">
+    <div class="container" style="max-width: 500px;">
+        <div class="card card-glass" style="padding: 3rem;" data-aos="zoom-in">
+            <div class="text-center mb-xl">
+                <img src="{% static 'images/logo.jpeg' %}" alt="AL BURAQ GROUP"
+                    style="height: 80px; margin: 0 auto 1.5rem;">
+                <h2>{% trans "Create Account" %}</h2>
+                <p style="color: var(--text-secondary);">{% trans "Join us and start trading" %}</p>
+            </div>
+
+            {% if form.errors %}
+            <div class="alert alert-error mb-lg">
+                {% for field in form %}
+                {% for error in field.errors %}
+                <p>{{ error }}</p>
+                {% endfor %}
+                {% endfor %}
+                {% for error in form.non_field_errors %}
+                <p>{{ error }}</p>
+                {% endfor %}
+            </div>
+            {% endif %}
+
+            <form method="POST" action="{% url 'accounts:register' %}">
+                {% csrf_token %}
+
+                <div class="grid grid-cols-2 gap-md">
+                    <div class="form-group">
+                        <label class="form-label">{% trans "First Name" %} *</label>
+                        <input type="text" name="first_name" class="form-control"
+                            value="{{ form.first_name.value|default:'' }}" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">{% trans "Last Name" %} *</label>
+                        <input type="text" name="last_name" class="form-control"
+                            value="{{ form.last_name.value|default:'' }}" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">{% trans "Username" %} *</label>
+                    <input type="text" name="username" class="form-control" value="{{ form.username.value|default:'' }}"
+                        required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">{% trans "Email" %} *</label>
+                    <input type="email" name="email" class="form-control" value="{{ form.email.value|default:'' }}"
+                        required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">{% trans "Phone (with country code)" %}</label>
+                    <input type="tel" name="phone" class="form-control" placeholder="+1234567890"
+                        value="{{ form.phone.value|default:'' }}">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">{% trans "Password" %} *</label>
+                    <input type="password" name="password1" class="form-control" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">{% trans "Confirm Password" %} *</label>
+                    <input type="password" name="password2" class="form-control" required>
+                </div>
+
+                <label class="flex items-center gap-sm mb-lg" style="cursor: pointer;">
+                    <input type="checkbox" name="terms" required style="accent-color: var(--gold-primary);">
+                    <span style="color: var(--text-secondary); font-size: 0.9rem;">
+                        {% trans "I agree to the" %} <a href="#">{% trans "Terms of Service" %}</a>
+                    </span>
+                </label>
+
+                <button type="submit" class="btn btn-primary w-full btn-lg">
+                    <i class="fas fa-user-plus"></i> {% trans "Create Account" %}
+                </button>
+            </form>
+
+            <div
+                style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); text-align: center;">
+                <p style="color: var(--text-secondary);">
+                    {% trans "Already have an account?" %}
+                    <a href="{% url 'accounts:login' %}" style="color: var(--gold-light); font-weight: 600;">{% trans
+                        "Sign In" %}</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,202 @@
+{% extends 'base.html' %}
+{% load static i18n %}
+
+{% block title %}{% trans "Dashboard" %} - AL BURAQ GROUP{% endblock %}
+
+{% block content %}
+<!-- Header -->
+<section style="padding: 130px 0 40px; background: var(--bg-darker);">
+    <div class="container">
+        <div class="flex justify-between items-center" style="flex-wrap: wrap; gap: 1rem;">
+            <div>
+                <h1 data-aos="fade-up">{% trans "Welcome," %} <span class="text-gold">
+                        {{ user.first_name|default:user.username }}</span></h1>
+                <p style="color: var(--text-secondary);" data-aos="fade-up" data-aos-delay="100">
+                    {% trans "Manage your account and orders" %}</p>
+            </div>
+            <a href="{% url 'accounts:logout' %}" class="btn btn-ghost" data-aos="fade-up">
+                <i class="fas fa-sign-out-alt"></i> {% trans "Logout" %}
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Dashboard Content -->
+<section class="section">
+    <div class="container">
+        <div class="grid grid-cols-4 gap-lg mb-2xl">
+            <!-- Stats Cards -->
+            <div class="card" style="padding: 1.5rem; border-left: 4px solid var(--gold-primary);" data-aos="fade-up">
+                <div class="flex items-center gap-md">
+                    <div
+                        style="width: 50px; height: 50px; background: rgba(196, 143, 30, 0.1); border-radius: var(--radius-lg); display: flex; align-items: center; justify-content: center;">
+                        <i class="fas fa-shopping-bag" style="color: var(--gold-light); font-size: 1.3rem;"></i>
+                    </div>
+                    <div>
+                        <p style="color: var(--text-muted); font-size: 0.85rem;">{% trans "Total Orders" %}</p>
+                        <p style="font-size: 1.5rem; font-weight: 700;">{{ orders.count }}</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" style="padding: 1.5rem; border-left: 4px solid var(--teal);" data-aos="fade-up"
+                data-aos-delay="100">
+                <div class="flex items-center gap-md">
+                    <div
+                        style="width: 50px; height: 50px; background: rgba(0, 200, 184, 0.1); border-radius: var(--radius-lg); display: flex; align-items: center; justify-content: center;">
+                        <i class="fas fa-truck" style="color: var(--teal); font-size: 1.3rem;"></i>
+                    </div>
+                    <div>
+                        <p style="color: var(--text-muted); font-size: 0.85rem;">{% trans "Active Shipments" %}</p>
+                        <p style="font-size: 1.5rem; font-weight: 700;">{{ active_shipments|default:0 }}</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" style="padding: 1.5rem; border-left: 4px solid var(--success);" data-aos="fade-up"
+                data-aos-delay="200">
+                <div class="flex items-center gap-md">
+                    <div
+                        style="width: 50px; height: 50px; background: rgba(16, 185, 129, 0.1); border-radius: var(--radius-lg); display: flex; align-items: center; justify-content: center;">
+                        <i class="fas fa-check-circle" style="color: var(--success); font-size: 1.3rem;"></i>
+                    </div>
+                    <div>
+                        <p style="color: var(--text-muted); font-size: 0.85rem;">{% trans "Completed" %}</p>
+                        <p style="font-size: 1.5rem; font-weight: 700;">{{ completed_orders|default:0 }}</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" style="padding: 1.5rem; border-left: 4px solid var(--purple);" data-aos="fade-up"
+                data-aos-delay="300">
+                <div class="flex items-center gap-md">
+                    <div
+                        style="width: 50px; height: 50px; background: rgba(139, 92, 246, 0.1); border-radius: var(--radius-lg); display: flex; align-items: center; justify-content: center;">
+                        <i class="fas fa-shopping-cart" style="color: var(--purple); font-size: 1.3rem;"></i>
+                    </div>
+                    <div>
+                        <p style="color: var(--text-muted); font-size: 0.85rem;">{% trans "Cart Items" %}</p>
+                        <p style="font-size: 1.5rem; font-weight: 700;">{{ cart_count|default:0 }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="flex gap-xl" style="flex-wrap: wrap; align-items: flex-start;">
+            <!-- Orders -->
+            <div style="flex: 2; min-width: 400px;">
+                <div class="card" style="padding: 2rem;" data-aos="fade-right">
+                    <div class="flex justify-between items-center mb-lg">
+                        <h3>{% trans "Recent Orders" %}</h3>
+                        <a href="#" style="color: var(--gold-light);">{% trans "View All" %}</a>
+                    </div>
+
+                    {% if orders %}
+                    <div class="table-responsive">
+                        <table style="width: 100%; border-collapse: collapse;">
+                            <thead>
+                                <tr style="border-bottom: 1px solid rgba(255,255,255,0.1);">
+                                    <th
+                                        style="text-align: left; padding: 1rem 0.5rem; color: var(--text-muted); font-weight: 500;">
+                                        {% trans "Order" %}</th>
+                                    <th
+                                        style="text-align: left; padding: 1rem 0.5rem; color: var(--text-muted); font-weight: 500;">
+                                        {% trans "Date" %}</th>
+                                    <th
+                                        style="text-align: left; padding: 1rem 0.5rem; color: var(--text-muted); font-weight: 500;">
+                                        {% trans "Status" %}</th>
+                                    <th
+                                        style="text-align: right; padding: 1rem 0.5rem; color: var(--text-muted); font-weight: 500;">
+                                        {% trans "Total" %}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for order in orders|slice:":5" %}
+                                <tr style="border-bottom: 1px solid rgba(255,255,255,0.05);">
+                                    <td style="padding: 1rem 0.5rem;">
+                                        <span style="color: var(--gold-light); font-weight: 600;">
+                                            {{ order.order_number }}</span>
+                                    </td>
+                                    <td style="padding: 1rem 0.5rem; color: var(--text-secondary);">{{
+                                        order.created_at|date:"M d, Y" }}</td>
+                                    <td style="padding: 1rem 0.5rem;">
+                                        <span
+                                            class="badge {% if order.status == 'completed' %}badge-success{% elif order.status == 'pending' %}badge-gold{% else %}badge-teal{% endif %}">
+                                            {{ order.get_status_display }}
+                                        </span>
+                                    </td>
+                                    <td style="padding: 1rem 0.5rem; text-align: right; font-weight: 600;">¥{{
+                                        order.total_amount }}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                    {% else %}
+                    <div class="text-center" style="padding: 3rem;">
+                        <i class="fas fa-shopping-bag"
+                            style="font-size: 3rem; color: var(--text-muted); margin-bottom: 1rem;"></i>
+                        <p style="color: var(--text-muted);">{% trans "No orders yet" %}</p>
+                        <a href="{% url 'store:category_list' %}" class="btn btn-primary mt-md">{% trans "Start Shopping" %}</a>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+
+            <!-- Profile & Quick Actions -->
+            <div style="flex: 1; min-width: 300px;">
+                <!-- Profile Card -->
+                <div class="card card-glass" style="padding: 2rem; margin-bottom: 1.5rem;" data-aos="fade-left">
+                    <div class="text-center">
+                        <div
+                            style="width: 80px; height: 80px; background: var(--gold-gradient); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem;">
+                            <i class="fas fa-user" style="font-size: 2rem; color: var(--bg-dark);"></i>
+                        </div>
+                        <h4>{{ user.get_full_name|default:user.username }}</h4>
+                        <p style="color: var(--text-muted); font-size: 0.9rem;">{{ user.email }}</p>
+                    </div>
+
+                    <hr style="border: none; border-top: 1px solid rgba(255,255,255,0.1); margin: 1.5rem 0;">
+
+                    <a href="{% url 'accounts:profile' %}" class="btn btn-ghost w-full mb-sm">
+                        <i class="fas fa-edit"></i> {% trans "Edit Profile" %}
+                    </a>
+                    <a href="#" class="btn btn-ghost w-full">
+                        <i class="fas fa-key"></i> {% trans "Change Password" %}
+                    </a>
+                </div>
+
+                <!-- Quick Actions -->
+                <div class="card" style="padding: 1.5rem;" data-aos="fade-left" data-aos-delay="100">
+                    <h4 class="mb-lg">{% trans "Quick Actions" %}</h4>
+
+                    <a href="{% url 'store:category_list' %}" class="flex items-center gap-md mb-md"
+                        style="padding: 0.75rem; background: var(--bg-card-hover); border-radius: var(--radius-md);">
+                        <i class="fas fa-shopping-bag" style="color: var(--gold-light);"></i>
+                        <span>{% trans "Browse Products" %}</span>
+                    </a>
+
+                    <a href="{% url 'orders:cart' %}" class="flex items-center gap-md mb-md"
+                        style="padding: 0.75rem; background: var(--bg-card-hover); border-radius: var(--radius-md);">
+                        <i class="fas fa-shopping-cart" style="color: var(--teal);"></i>
+                        <span>{% trans "View Cart" %}</span>
+                    </a>
+
+                    <a href="{% url 'tracking:tracking' %}" class="flex items-center gap-md mb-md"
+                        style="padding: 0.75rem; background: var(--bg-card-hover); border-radius: var(--radius-md);">
+                        <i class="fas fa-truck" style="color: var(--purple);"></i>
+                        <span>{% trans "Track Shipment" %}</span>
+                    </a>
+
+                    <a href="https://wa.me/{{ COMPANY_WHATSAPP|slice:'1:' }}" target="_blank"
+                        class="flex items-center gap-md"
+                        style="padding: 0.75rem; background: var(--bg-card-hover); border-radius: var(--radius-md);">
+                        <i class="fab fa-whatsapp" style="color: #25D366;"></i>
+                        <span>{% trans "Contact Support" %}</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

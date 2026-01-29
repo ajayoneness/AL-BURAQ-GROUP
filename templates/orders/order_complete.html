@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% load static i18n %}
+
+{% block title %}{% trans "Order Complete" %} - AL BURAQ GROUP{% endblock %}
+
+{% block content %}
+<section class="min-h-screen flex items-center justify-center" style="padding-top: 100px;">
+    <div class="container" style="max-width: 700px;">
+        <div class="card card-glass text-center" style="padding: 3rem;" data-aos="zoom-in">
+            <div
+                style="width: 100px; height: 100px; background: var(--success); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 2rem;">
+                <i class="fas fa-check" style="font-size: 3rem; color: white;"></i>
+            </div>
+
+            <h1 class="text-gold mb-md">{% trans "Order Placed Successfully!" %}</h1>
+
+            <p style="color: var(--text-secondary); font-size: 1.1rem; margin-bottom: 2rem;">
+                {% trans "Thank you for your order. Your order number is:" %}
+            </p>
+
+            <div
+                style="background: var(--bg-card); padding: 1rem 2rem; border-radius: var(--radius-lg); display: inline-block; margin-bottom: 2rem;">
+                <span style="font-size: 1.5rem; font-weight: 700; color: var(--gold-light);">{{ order.order_number }}</span>
+            </div>
+
+            <div class="alert alert-info text-left mb-xl">
+                <p><strong>{% trans "Next Steps:" %}</strong></p>
+                <ol style="margin-top: 0.5rem; padding-left: 1.5rem;">
+                    <li>{% trans "Download your order details (Excel)" %}</li>
+                    <li>{% trans "Contact us via WhatsApp to confirm your order" %}</li>
+                    <li>{% trans "We'll provide shipping quote and payment details" %}</li>
+                </ol>
+            </div>
+
+            <div class="flex justify-center gap-md" style="flex-wrap: wrap;">
+                {% if order.excel_file %}
+                <a href="{% url 'orders:download_excel' order.order_number %}" class="btn btn-secondary">
+                    <i class="fas fa-file-excel"></i> {% trans "Download Order Excel" %}
+                </a>
+                {% endif %}
+
+                <a href="{{ whatsapp_url }}" target="_blank" class="btn btn-primary" style="background: #25D366;">
+                    <i class="fab fa-whatsapp"></i> {% trans "Confirm via WhatsApp" %}
+                </a>
+            </div>
+
+            <hr style="border: none; border-top: 1px solid rgba(255,255,255,0.1); margin: 2rem 0;">
+
+            <h4 class="mb-md">{% trans "Order Details" %}</h4>
+
+            <div class="text-left">
+                {% for item in order.items.all %}
+                <div class="flex justify-between mb-sm"
+                    style="padding: 0.5rem 0; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                    <span>{{ item.product_name }} × {{ item.quantity }}</span>
+                    <span style="color: var(--gold-light);">¥{{ item.get_total }}</span>
+                </div>
+                {% endfor %}
+
+                <div class="flex justify-between mt-md" style="font-weight: 700; font-size: 1.1rem;">
+                    <span>{% trans "Total" %}:</span>
+                    <span style="color: var(--gold-light);">¥{{ order.subtotal }}</span>
+                </div>
+            </div>
+
+            <div class="mt-xl">
+                <a href="{% url 'core:home' %}" class="btn btn-ghost">
+                    <i class="fas fa-home"></i> {% trans "Back to Home" %}
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

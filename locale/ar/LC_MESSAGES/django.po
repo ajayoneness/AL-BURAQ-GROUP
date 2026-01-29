@@ -1,0 +1,270 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+
+msgid ""
+msgstr "Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+"
+
+msgid "Services"
+msgstr "خدماتنا"
+
+msgid "Our Services"
+msgstr "خدماتنا"
+
+msgid "Our"
+msgstr "خدماتنا"
+
+msgid "Comprehensive trade and logistics solutions for your business"
+msgstr "حلول تجارية ولوجستية شاملة لأعمالك"
+
+msgid "Air Shipping"
+msgstr "الشحن الجوي"
+
+msgid "Fast and reliable air freight services for time-sensitive shipments. Ideal for urgent orders and high-value goods that need quick delivery worldwide."
+msgstr "خدمات الشحن الجوي السريعة والموثوقة للشحنات الحساسة للوقت. مثالية للطلبات العاجلة والبضائع ذات القيمة العالية التي تحتاج إلى تسليم سريع في جميع أنحاء العالم."
+
+msgid "Delivery in 3-7 days"
+msgstr "التسليم في 3-7 أيام"
+
+msgid "Door-to-door service"
+msgstr "خدمة من الباب إلى الباب"
+
+msgid "Real-time tracking"
+msgstr "تتبع في الوقت الحقيقي"
+
+msgid "Sea Shipping"
+msgstr "الشحن البحري"
+
+msgid "Cost-effective ocean freight for bulk shipments. Perfect for large orders where time is flexible but cost efficiency is paramount."
+msgstr "شحن بحري فعال من حيث التكلفة للشحنات الضخمة. مثالي للطلبات الكبيرة حيث يكون الوقت مرنًا ولكن الكفاءة من حيث التكلفة هي الأهم."
+
+msgid "FCL & LCL options"
+msgstr "خيارات FCL و LCL"
+
+msgid "Major ports worldwide"
+msgstr "الموانئ الرئيسية في جميع أنحاء العالم"
+
+msgid "Competitive rates"
+msgstr "أسعار تنافسية"
+
+msgid "Land Shipping"
+msgstr "الشحن البري"
+
+msgid "Rail and road freight connecting China to Central Asia, Middle East, and Europe via the Belt and Road routes."
+msgstr "الشحن عبر السكك الحديدية والطرق البرية الذي يربط الصين بآسيا الوسطى والشرق الأوسط وأوروبا عبر طرق الحزام والطريق."
+
+msgid "China-Europe Express"
+msgstr "قطار الصين-أوروبا السريع"
+
+msgid "Faster than sea freight"
+msgstr "أسرع من الشحن البحري"
+
+msgid "Regular departures"
+msgstr "رحلات منتظمة"
+
+msgid "Sourcing & Purchasing"
+msgstr "التوريد والشراء"
+
+msgid "Sourcing"
+msgstr "التوريد"
+
+msgid "Expert product sourcing from verified Chinese manufacturers. We find the best suppliers and negotiate the best prices for you."
+msgstr "توريد منتجات خبير من مصنعين صينيين تم التحقق منهم. نجد أفضل الموردين ونتفاوض على أفضل الأسعار لك."
+
+msgid "Factory verification"
+msgstr "التحقق من المصنع"
+
+msgid "Price negotiation"
+msgstr "التفاوض على السعر"
+
+msgid "Sample management"
+msgstr "إدارة العينات"
+
+msgid "Quality Control"
+msgstr "مراقبة الجودة"
+
+msgid "Rigorous quality inspection at every stage. Our QC team ensures     products meet your specifications before shipping."
+msgstr "فحص دقيق للجودة في كل مرحلة. يضمن فريق مراقبة الجودة لدينا أن المنتجات تلبي مواصفاتك قبل الشحن."
+
+msgid "Pre-shipment inspection"
+msgstr "فحص ما قبل الشحن"
+
+msgid "Detailed reports"
+msgstr "تقارير مفصلة"
+
+msgid "Photo documentation"
+msgstr "توثيق بالصور"
+
+msgid "Assembly & Packing"
+msgstr "التجميع والتغليف"
+
+msgid "Professional packaging and assembly services. We consolidate products from multiple suppliers and pack according to your requirements."
+msgstr "خدمات تغليف وتجميع احترافية. نقوم بدمج المنتجات من موردين متعددين وتغليفها وفقًا لمتطلباتك."
+
+msgid "Custom packaging"
+msgstr "تغليف مخصص"
+
+msgid "Labeling & branding"
+msgstr "وضع العلامات والعلامات التجارية"
+
+msgid "Consolidation"
+msgstr "تجميع الشحنات"
+
+msgid "Documentation & Customs"
+msgstr "التوثيق والجمارك"
+
+msgid "Documentation"
+msgstr "التوثيق"
+
+msgid "Complete customs clearance and documentation handling. We   navigate complex regulations so you don't have to."
+msgstr "تخليص جمركي كامل ومعالجة الوثائق. نتنقل عبر اللوائح المعقدة حتى لا تضطر لذلك."
+
+msgid "Export documentation"
+msgstr "وثائق التصدير"
+
+msgid "Customs clearance"
+msgstr "التخليص الجمركي"
+
+msgid "Compliance consulting"
+msgstr "استشارات الامتثال"
+
+msgid "Mechanism of Action"
+msgstr "آلية العمل"
+
+msgid "A streamlined process from order to delivery. We handle every step of your import journey with precision and care."
+msgstr "عملية مبسطة من الطلب إلى التسليم. نتعامل مع كل خطوة في رحلة الاستيراد الخاصة بك بدقة وعناية."
+
+msgid "End-to-end management"
+msgstr "إدارة شاملة"
+
+msgid "Regular updates"
+msgstr "تحديثات منتظمة"
+
+msgid "Dedicated support"
+msgstr "دعم مخصص"
+
+msgid "Success Stories"
+msgstr "قصص النجاح"
+
+msgid "Join hundreds of satisfied clients who have grown their businesses with AL BURAQ GROUP. Our track record speaks for itself."
+msgstr "انضم إلى مئات العملاء الراضين الذين نموا أعمالهم مع مجموعة البراق. سجلنا يتحدث عن نفسه."
+
+msgid "View Case Studies"
+msgstr "عرض دراسات الحالة"
+
+msgid "Success"
+msgstr "قصص"
+
+msgid "Stories"
+msgstr "النجاح"
+
+msgid "Need a Custom Solution?"
+msgstr "هل تحتاج إلى حل مخصص؟"
+
+msgid "Contact us to discuss your specific requirements and get a tailored quote."
+msgstr "اتصل بنا لمناقشة متطلباتك الخاصة والحصول على عرض أسعار مخصص."
+
+msgid "Get a Quote"
+msgstr "احصل على عرض أسعار"
+
+msgid "Chat on WhatsApp"
+msgstr "دردشة عبر واتساب"
+
+msgid "Home"
+msgstr "الرئيسية"
+
+msgid "About Us"
+msgstr "من نحن"
+
+msgid "Store"
+msgstr "المتجر"
+
+msgid "Tracking"
+msgstr "تتبع الشحنة"
+
+msgid "Track Your Shipment"
+msgstr "تتبع شحنتك"
+
+msgid "FAQ"
+msgstr "الأسئلة الشائعة"
+
+msgid "Contact"
+msgstr "اتصل بنا"
+
+msgid "Login"
+msgstr "تسجيل الدخول"
+
+msgid "Logout"
+msgstr "تسجيل الخروج"
+
+msgid "Profile"
+msgstr "الملف الشخصي"
+
+msgid "Browse Store"
+msgstr "تصفح المتجر"
+
+msgid "AL BURAQ GROUP - International Trade & Logistics"
+msgstr "مجموعة البراق - التجارة الدولية والخدمات اللوجستية"
+
+msgid "Your Gateway to"
+msgstr "بوابتك إلى"
+
+msgid "Global Trade"
+msgstr "التجارة العالمية"
+
+msgid "Product"
+msgstr "تصنيفات"
+
+msgid "Categories"
+msgstr "المنتجات"
+
+msgid "Browse Our"
+msgstr "تصفح"
+
+msgid "Products"
+msgstr "منتجاتنا"
+
+msgid "Edit Profile"
+msgstr "تعديل الملف الشخصي"
+
+msgid "First Name"
+msgstr "الاسم الأول"
+
+msgid "Last Name"
+msgstr "اسم العائلة"
+
+msgid "Email"
+msgstr "البريد الإلكتروني"
+
+msgid "Phone"
+msgstr "الهاتف"
+
+msgid "Company"
+msgstr "الشركة"
+
+msgid "Country"
+msgstr "الدولة"
+
+msgid "Address"
+msgstr "العنوان"
+
+msgid "Save Changes"
+msgstr "حفظ التغييرات"
+
+msgid "Cancel"
+msgstr "إلغاء"
+
+msgid "Welcome,"
+msgstr "مرحباً،"
+
+msgid "Manage your account and orders"
+msgstr "إدارة حسابك وطلباتك"
+
+msgid "Frequently Asked"
+msgstr "الأسئلة"
+
+msgid "Questions"
+msgstr "الشائعة"
+

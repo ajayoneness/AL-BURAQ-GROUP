@@ -1,0 +1,418 @@
+{% extends 'base.html' %}
+{% load static i18n %}
+
+{% block title %}{% trans "AL BURAQ GROUP - International Trade & Logistics" %}{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero">
+    <div class="hero-bg">
+        <div
+            style="position: absolute; inset: 0; background: linear-gradient(135deg, rgba(10, 22, 40, 0.9) 0%, rgba(15, 29, 50, 0.8) 50%, rgba(10, 22, 40, 0.9) 100%);">
+        </div>
+    </div>
+
+    <!-- Floating Elements -->
+    <i class="fas fa-ship hero-float hero-float-1" style="color: var(--gold-primary);"></i>
+    <i class="fas fa-plane hero-float hero-float-2" style="color: var(--teal);"></i>
+
+    <div class="hero-content container">
+        <img src="{% static 'images/logo.jpeg' %}" alt="AL BURAQ GROUP" class="hero-logo" data-aos="zoom-in">
+
+        <h1 class="hero-title" data-aos="fade-up" data-aos-delay="200">
+            {% trans "Your Gateway to" %} <span class="text-gold">{% trans "Global Trade" %}</span>
+        </h1>
+
+        <p class="hero-subtitle" data-aos="fade-up" data-aos-delay="400">
+            {% trans "Specialized in international trade, sourcing, and logistics from China to the world. Quality products, reliable shipping, exceptional service." %}
+        </p>
+
+        <div class="hero-buttons" data-aos="fade-up" data-aos-delay="600">
+            <a href="{% url 'store:category_list' %}" class="btn btn-primary btn-lg">
+                <i class="fas fa-shopping-bag"></i> {% trans "Browse Store" %}
+            </a>
+            <a href="{% url 'tracking:tracking' %}" class="btn btn-secondary btn-lg">
+                <i class="fas fa-search"></i> {% trans "Track Shipment" %}
+            </a>
+        </div>
+
+        <!-- Stats -->
+        <div class="hero-stats"
+            style="display: flex; justify-content: center; gap: 3rem; margin-top: 4rem; flex-wrap: wrap;"
+            data-aos="fade-up" data-aos-delay="800">
+            <div class="stat-item" style="text-align: center;">
+                <div style="font-size: 2.5rem; font-weight: 800; color: var(--gold-light);" class="counter"
+                    data-target="10">10+</div>
+                <div style="color: var(--text-secondary); font-size: 0.9rem;">{% trans "Years Experience" %}</div>
+            </div>
+            <div class="stat-item" style="text-align: center;">
+                <div style="font-size: 2.5rem; font-weight: 800; color: var(--gold-light);" class="counter"
+                    data-target="5000">5000+</div>
+                <div style="color: var(--text-secondary); font-size: 0.9rem;">{% trans "Products" %}</div>
+            </div>
+            <div class="stat-item" style="text-align: center;">
+                <div style="font-size: 2.5rem; font-weight: 800; color: var(--gold-light);" class="counter"
+                    data-target="50">50+</div>
+                <div style="color: var(--text-secondary); font-size: 0.9rem;">{% trans "Countries Served" %}</div>
+            </div>
+            <div class="stat-item" style="text-align: center;">
+                <div style="font-size: 2.5rem; font-weight: 800; color: var(--gold-light);" class="counter"
+                    data-target="1000">1000+</div>
+                <div style="color: var(--text-secondary); font-size: 0.9rem;">{% trans "Happy Clients" %}</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scroll indicator -->
+    <div
+        style="position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%); animation: bounce 2s infinite;">
+        <i class="fas fa-chevron-down" style="font-size: 1.5rem; color: var(--gold-light);"></i>
+    </div>
+</section>
+
+<!-- Services Section -->
+<section class="section" style="background: var(--bg-darker);">
+    <div class="container">
+        <div class="text-center mb-2xl">
+            <h2 class="mb-md" data-aos="fade-up">{% trans "Our" %} <span class="text-gold">{% trans "Services" %}</span>
+            </h2>
+            <p style="color: var(--text-secondary); max-width: 600px; margin: 0 auto;" data-aos="fade-up"
+                data-aos-delay="100">
+                {% trans "Comprehensive trade and logistics solutions tailored to your needs" %}
+            </p>
+        </div>
+
+        <div class="grid grid-cols-4 gap-lg">
+            <!-- Air Shipping -->
+            <div class="card service-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="icon"><i class="fas fa-plane"></i></div>
+                <h4 class="card-title">{% trans "Air Shipping" %}</h4>
+                <p class="card-text">{% trans "Fast and reliable air freight services for time-sensitive shipments worldwide." %}</p>
+            </div>
+
+            <!-- Sea Shipping -->
+            <div class="card service-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="icon"><i class="fas fa-ship"></i></div>
+                <h4 class="card-title">{% trans "Sea Shipping" %}</h4>
+                <p class="card-text">{% trans "Cost-effective sea freight solutions for bulk and large shipments." %}</p>
+            </div>
+
+            <!-- Land Shipping -->
+            <div class="card service-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="icon"><i class="fas fa-train"></i></div>
+                <h4 class="card-title">{% trans "Land Shipping" %}</h4>
+                <p class="card-text">{% trans "Efficient rail and road transport connecting China to Central Asia and Europe." %}</p>
+            </div>
+
+            <!-- Sourcing -->
+            <div class="card service-card" data-aos="fade-up" data-aos-delay="400">
+                <div class="icon"><i class="fas fa-search-dollar"></i></div>
+                <h4 class="card-title">{% trans "Sourcing" %}</h4>
+                <p class="card-text">
+                    {% trans "Expert product sourcing from verified Chinese manufacturers and suppliers." %}
+                </p>
+            </div>
+
+            <!-- Quality Control -->
+            <div class="card service-card" data-aos="fade-up" data-aos-delay="500">
+                <div class="icon"><i class="fas fa-check-circle"></i></div>
+                <h4 class="card-title">{% trans "Quality Control" %}</h4>
+                <p class="card-text">{% trans "Rigorous quality inspection to ensure products meet your standards." %}
+                </p>
+            </div>
+
+            <!-- Packing -->
+            <div class="card service-card" data-aos="fade-up" data-aos-delay="600">
+                <div class="icon"><i class="fas fa-box"></i></div>
+                <h4 class="card-title">{% trans "Packing & Assembly" %}</h4>
+                <p class="card-text">{% trans "Professional packaging and assembly services for your products." %}</p>
+            </div>
+
+            <!-- Documentation -->
+            <div class="card service-card" data-aos="fade-up" data-aos-delay="700">
+                <div class="icon"><i class="fas fa-file-alt"></i></div>
+                <h4 class="card-title">{% trans "Documentation" %}</h4>
+                <p class="card-text">{% trans "Complete customs clearance and documentation handling." %}</p>
+            </div>
+
+            <!-- Support -->
+            <div class="card service-card" data-aos="fade-up" data-aos-delay="800">
+                <div class="icon"><i class="fas fa-headset"></i></div>
+                <h4 class="card-title">{% trans "24/7 Support" %}</h4>
+                <p class="card-text">{% trans "Dedicated support team available round the clock for assistance." %}</p>
+            </div>
+        </div>
+
+        <div class="text-center mt-2xl" data-aos="fade-up">
+            <a href="{% url 'pages:services' %}" class="btn btn-primary">
+                {% trans "View All Services" %} <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Categories Section -->
+<section class="section">
+    <div class="container">
+        <div class="text-center mb-2xl">
+            <h2 class="mb-md" data-aos="fade-up">{% trans "Product" %} <span class="text-gold">{% trans "Categories" %}</span></h2>
+            <p style="color: var(--text-secondary); max-width: 600px; margin: 0 auto;" data-aos="fade-up"
+                data-aos-delay="100">
+                {% trans "Explore our wide range of wholesale products from China" %}
+            </p>
+        </div>
+
+        <div class="grid grid-cols-3 gap-lg">
+            {% for category in categories %}
+            <a href="{% url 'store:category_detail' category.slug %}" class="card" data-aos="fade-up"
+                data-aos-delay="{{ forloop.counter0|add:1 }}00">
+                {% if category.image %}
+                <img src="{{ category.image.url }}" alt="{{ category.name }}" class="card-image">
+                {% else %}
+                <div class="card-image"
+                    style="background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-card-hover) 100%); display: flex; align-items: center; justify-content: center;">
+                    <i class="fas fa-box-open" style="font-size: 3rem; color: var(--gold-primary);"></i>
+                </div>
+                {% endif %}
+                <div class="card-body">
+                    <h4 class="card-title">{{ category.name }}</h4>
+                    <p class="card-text">{{ category.description|truncatewords:15 }}</p>
+                    <span class="badge badge-gold mt-md">{{ category.get_products_count }} {% trans "products" %}</span>
+                </div>
+            </a>
+            {% empty %}
+            <div class="text-center" style="grid-column: 1 / -1; padding: 3rem;">
+                <i class="fas fa-boxes" style="font-size: 4rem; color: var(--text-muted); margin-bottom: 1rem;"></i>
+                <p style="color: var(--text-muted);">{% trans "Categories coming soon..." %}</p>
+            </div>
+            {% endfor %}
+        </div>
+
+        <div class="text-center mt-2xl" data-aos="fade-up">
+            <a href="{% url 'store:category_list' %}" class="btn btn-primary">
+                {% trans "Browse All Products" %} <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Why Choose Us Section -->
+<section class="section" style="background: linear-gradient(135deg, var(--bg-darker) 0%, var(--bg-dark) 100%);">
+    <div class="container">
+        <div class="flex items-center gap-xl" style="flex-wrap: wrap;">
+            <div style="flex: 1; min-width: 300px;" data-aos="fade-right">
+                <h2 class="mb-lg">{% trans "Why Choose" %} <span class="text-gold">AL BURAQ?</span></h2>
+                <p style="color: var(--text-secondary); margin-bottom: 2rem;">
+                    {% trans "With over 10 years of experience in international trade, we have built a reputation for reliability, quality, and exceptional customer service." %}
+                </p>
+
+                <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+                    <div class="flex items-center gap-md">
+                        <div
+                            style="width: 50px; height: 50px; background: var(--gold-gradient); border-radius: 12px; display: flex; align-items: center; justify-content: center;">
+                            <i class="fas fa-medal" style="color: var(--bg-dark); font-size: 1.3rem;"></i>
+                        </div>
+                        <div>
+                            <h5 style="margin-bottom: 0.25rem;">{% trans "Quality Guaranteed" %}</h5>
+                            <p style="color: var(--text-secondary); font-size: 0.9rem;">{% trans "Rigorous quality control on all products" %}</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center gap-md">
+                        <div
+                            style="width: 50px; height: 50px; background: var(--gold-gradient); border-radius: 12px; display: flex; align-items: center; justify-content: center;">
+                            <i class="fas fa-dollar-sign" style="color: var(--bg-dark); font-size: 1.3rem;"></i>
+                        </div>
+                        <div>
+                            <h5 style="margin-bottom: 0.25rem;">{% trans "Competitive Prices" %}</h5>
+                            <p style="color: var(--text-secondary); font-size: 0.9rem;">{% trans "Direct factory prices without middlemen" %}</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center gap-md">
+                        <div
+                            style="width: 50px; height: 50px; background: var(--gold-gradient); border-radius: 12px; display: flex; align-items: center; justify-content: center;">
+                            <i class="fas fa-globe" style="color: var(--bg-dark); font-size: 1.3rem;"></i>
+                        </div>
+                        <div>
+                            <h5 style="margin-bottom: 0.25rem;">{% trans "Global Shipping" %}</h5>
+                            <p style="color: var(--text-secondary); font-size: 0.9rem;">{% trans "Delivery to 50+ countries worldwide" %}</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center gap-md">
+                        <div
+                            style="width: 50px; height: 50px; background: var(--gold-gradient); border-radius: 12px; display: flex; align-items: center; justify-content: center;">
+                            <i class="fas fa-headset" style="color: var(--bg-dark); font-size: 1.3rem;"></i>
+                        </div>
+                        <div>
+                            <h5 style="margin-bottom: 0.25rem;">{% trans "Dedicated Support" %}</h5>
+                            <p style="color: var(--text-secondary); font-size: 0.9rem;">{% trans "Multilingual team available 24/7" %}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="flex: 1; min-width: 300px;" data-aos="fade-left">
+                <div class="card card-glass" style="padding: 2rem;">
+                    <h4 class="text-gold mb-lg text-center">{% trans "Track Your Shipment" %}</h4>
+                    <form action="{% url 'tracking:tracking' %}" method="GET">
+                        <div class="form-group">
+                            <input type="text" name="tracking" class="form-control"
+                                placeholder="{% trans 'Enter tracking number...' %}" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary w-full">
+                            <i class="fas fa-search"></i> {% trans "Track Now" %}
+                        </button>
+                    </form>
+
+                    <div style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1);">
+                        <p
+                            style="color: var(--text-secondary); font-size: 0.85rem; text-align: center; margin-bottom: 1rem;">
+                            {% trans "Need help? Contact us directly:" %}</p>
+                        <div class="flex justify-center gap-md">
+                            <a href="https://wa.me/{{ COMPANY_WHATSAPP|slice:'1:' }}" class="btn btn-ghost"
+                                style="background: #25D366; color: white; border: none;">
+                                <i class="fab fa-whatsapp"></i> WhatsApp
+                            </a>
+                            <a href="mailto:{{ COMPANY_EMAIL }}" class="btn btn-ghost">
+                                <i class="fas fa-envelope"></i> Email
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Offices Section -->
+<section class="section">
+    <div class="container">
+        <div class="text-center mb-2xl">
+            <h2 class="mb-md" data-aos="fade-up">{% trans "Our" %} <span class="text-gold">{% trans "Offices" %}</span>
+            </h2>
+            <p style="color: var(--text-secondary); max-width: 600px; margin: 0 auto;" data-aos="fade-up"
+                data-aos-delay="100">
+                {% trans "Visit our offices in China for personalized service" %}
+            </p>
+        </div>
+
+        <div class="grid grid-cols-3 gap-lg">
+            <!-- Office Cards based on the color image -->
+            <div class="card card-glass" style="padding: 2rem; border-top: 3px solid var(--gold-primary);"
+                data-aos="fade-up" data-aos-delay="100">
+                <h4 style="color: var(--gold-light); margin-bottom: 1rem;">
+                    <i class="fas fa-map-marker-alt"></i> Yiwu - Branch 1
+                </h4>
+                <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 1rem;">
+                    Room 1218, Elevator No. 3, Hengfeng Jiacheng Office Building, Choujiang North Street, Fotian Street,
+                    Yiwu City
+                </p>
+                <div class="badge badge-teal mb-md">China - Yiwu City - Opposite Futian Market</div>
+                <a href="tel:+8619557959148"
+                    style="color: var(--teal); display: flex; align-items: center; gap: 0.5rem;">
+                    <i class="fas fa-phone"></i> +86 19557959148
+                </a>
+            </div>
+
+            <div class="card card-glass" style="padding: 2rem; border-top: 3px solid var(--teal);" data-aos="fade-up"
+                data-aos-delay="200">
+                <h4 style="color: var(--gold-light); margin-bottom: 1rem;">
+                    <i class="fas fa-building"></i> SHOW-ROOM
+                </h4>
+                <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 1rem;">
+                    Office, Room 3A01, 4th Floor, Building A, Futian Building, Yiwu City, Zhejiang Province, China
+                </p>
+                <div class="badge badge-teal mb-md">Yiwu - Futian Building A (4th Floor)</div>
+                <a href="tel:+8619557959148"
+                    style="color: var(--teal); display: flex; align-items: center; gap: 0.5rem;">
+                    <i class="fas fa-phone"></i> +86 19557959148
+                </a>
+            </div>
+
+            <div class="card card-glass" style="padding: 2rem; border-top: 3px solid var(--purple);" data-aos="fade-up"
+                data-aos-delay="300">
+                <h4 style="color: var(--gold-light); margin-bottom: 1rem;">
+                    <i class="fas fa-city"></i> Guangzhou
+                </h4>
+                <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 1rem;">
+                    Unit 1902, East Tower, No. 59 Huali Road, Tianhe District, Guangzhou
+                </p>
+                <div class="badge" style="background: var(--purple); color: white;">Guangzhou - Tianhe District</div>
+                <a href="tel:+8619557959148"
+                    style="color: var(--teal); display: flex; align-items: center; gap: 0.5rem; margin-top: 1rem;">
+                    <i class="fas fa-phone"></i> +86 19557959148
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="section"
+    style="background: linear-gradient(135deg, var(--gold-dark) 0%, var(--gold-primary) 50%, var(--gold-light) 100%);">
+    <div class="container text-center">
+        <h2 style="color: var(--bg-dark); margin-bottom: 1rem;" data-aos="fade-up">{% trans "Ready to Start Your Import Business?" %}</h2>
+        <p style="color: var(--bg-dark); opacity: 0.8; max-width: 600px; margin: 0 auto 2rem;" data-aos="fade-up"
+            data-aos-delay="100">
+            {% trans "Join thousands of satisfied clients who trust AL BURAQ GROUP for their sourcing and logistics needs." %}
+        </p>
+        <div class="flex justify-center gap-md" style="flex-wrap: wrap;" data-aos="fade-up" data-aos-delay="200">
+            <a href="{% url 'accounts:register' %}" class="btn"
+                style="background: var(--bg-dark); color: var(--gold-light);">
+                <i class="fas fa-user-plus"></i> {% trans "Create Account" %}
+            </a>
+            <a href="https://wa.me/{{ COMPANY_WHATSAPP|slice:'1:' }}" class="btn"
+                style="background: white; color: var(--bg-dark);">
+                <i class="fab fa-whatsapp"></i> {% trans "Contact Us" %}
+            </a>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    // Bounce animation
+    const style = document.createElement('style');
+    style.textContent = `
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+            40% { transform: translateX(-50%) translateY(-10px); }
+            60% { transform: translateX(-50%) translateY(-5px); }
+        }
+    `;
+    document.head.appendChild(style);
+
+    // Counter animation
+    const counters = document.querySelectorAll('.counter');
+    const speed = 200;
+
+    const animateCounter = (counter) => {
+        const target = +counter.getAttribute('data-target');
+        const count = +counter.innerText.replace(/\D/g, '');
+        const inc = target / speed;
+
+        if (count < target) {
+            counter.innerText = Math.ceil(count + inc) + '+';
+            setTimeout(() => animateCounter(counter), 10);
+        } else {
+            counter.innerText = target + '+';
+        }
+    };
+
+    // Intersection Observer for counters
+    const counterObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                animateCounter(entry.target);
+                counterObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.5 });
+
+    counters.forEach(counter => counterObserver.observe(counter));
+</script>
+{% endblock %}

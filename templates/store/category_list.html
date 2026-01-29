@@ -1,0 +1,115 @@
+{% extends 'base.html' %}
+{% load static i18n %}
+
+{% block title %}{% trans "Store" %} - AL BURAQ GROUP{% endblock %}
+
+{% block extra_css %}
+<style>
+    .category-card {
+        position: relative;
+        overflow: hidden;
+        border-radius: var(--radius-xl);
+        height: 280px;
+    }
+
+    .category-card img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+    }
+
+    .category-card:hover img {
+        transform: scale(1.1);
+    }
+
+    .category-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(180deg, transparent 0%, rgba(10, 22, 40, 0.9) 100%);
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding: 1.5rem;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<!-- Hero -->
+<section style="padding: 150px 0 80px; background: linear-gradient(180deg, var(--bg-darker) 0%, var(--bg-dark) 100%);">
+    <div class="container text-center">
+        <h1 class="mb-md" data-aos="fade-up">{% trans "Browse Our" %} <span class="text-gold">
+            {% trans "Products" %}</span></h1>
+        <p style="color: var(--text-secondary); max-width: 600px; margin: 0 auto;" data-aos="fade-up"
+            data-aos-delay="100">
+            {% trans "Discover our wide range of wholesale products from China" %}
+        </p>
+
+        <!-- Search -->
+        <div style="max-width: 500px; margin: 2rem auto 0;" data-aos="fade-up" data-aos-delay="200">
+            <form action="{% url 'store:search' %}" method="GET" class="flex gap-sm">
+                <input type="text" name="q" class="form-control" placeholder="{% trans 'Search products...' %}">
+                <button type="submit" class="btn btn-primary">
+                    <i class="fas fa-search"></i>
+                </button>
+            </form>
+        </div>
+    </div>
+</section>
+
+<!-- Categories Grid -->
+<section class="section">
+    <div class="container">
+        <div class="grid grid-cols-3 gap-xl">
+            {% for category in categories %}
+            <a href="{% url 'store:category_detail' category.slug %}" class="category-card" data-aos="fade-up"
+                data-aos-delay="{{ forloop.counter0 }}50">
+                {% if category.image %}
+                <img src="{{ category.image.url }}" alt="{{ category.name }}">
+                {% else %}
+                <div
+                    style="width: 100%; height: 100%; background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-card-hover) 100%); display: flex; align-items: center; justify-content: center;">
+                    <i class="fas fa-box-open" style="font-size: 4rem; color: var(--gold-primary); opacity: 0.5;"></i>
+                </div>
+                {% endif %}
+                <div class="category-overlay">
+                    <h3 style="margin-bottom: 0.5rem;">{{ category.name }}</h3>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 0.5rem;">
+                        {{ category.description|truncatewords:10 }}</p>
+                    <span class="badge badge-gold">{{ category.get_products_count }} {% trans "products" %}</span>
+                </div>
+            </a>
+            {% empty %}
+            <div class="text-center" style="grid-column: 1 / -1; padding: 5rem;">
+                <i class="fas fa-boxes" style="font-size: 5rem; color: var(--text-muted); margin-bottom: 1.5rem;"></i>
+                <h3 style="color: var(--text-muted);">{% trans "No categories available yet" %}</h3>
+                <p style="color: var(--text-muted);">{% trans "Check back soon for our product catalog" %}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<!-- Quick Contact -->
+<section class="section" style="background: var(--bg-darker);">
+    <div class="container">
+        <div class="card card-glass" style="padding: 3rem;">
+            <div class="flex items-center justify-between gap-xl" style="flex-wrap: wrap;">
+                <div>
+                    <h3 class="mb-sm">{% trans "Can't find what you're looking for?" %}</h3>
+                    <p style="color: var(--text-secondary);">{% trans "Contact us with your product requirements and we'll source it for you." %}</p>
+                </div>
+                <div class="flex gap-md">
+                    <a href="https://wa.me/{{ COMPANY_WHATSAPP|slice:'1:' }}" class="btn btn-primary">
+                        <i class="fab fa-whatsapp"></i> {% trans "WhatsApp Us" %}
+                    </a>
+                    <a href="{% url 'pages:contact' %}" class="btn btn-secondary">
+                        <i class="fas fa-envelope"></i> {% trans "Send Inquiry" %}
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

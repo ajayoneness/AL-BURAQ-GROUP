@@ -1,0 +1,134 @@
+{% extends 'base.html' %}
+{% load static i18n crispy_forms_tags %}
+
+{% block title %}{% trans "Checkout" %} - AL BURAQ GROUP{% endblock %}
+
+{% block content %}
+<!-- Header -->
+<section style="padding: 130px 0 40px; background: var(--bg-darker);">
+    <div class="container">
+        <h1 data-aos="fade-up"><i class="fas fa-credit-card" style="color: var(--gold-light);"></i>
+            {% trans "Checkout" %}</h1>
+    </div>
+</section>
+
+<!-- Checkout Form -->
+<section class="section">
+    <div class="container">
+        <div class="flex gap-xl" style="flex-wrap: wrap; align-items: flex-start;">
+            <!-- Form -->
+            <div style="flex: 2; min-width: 400px;">
+                <form method="POST" action="{% url 'orders:checkout' %}">
+                    {% csrf_token %}
+
+                    <div class="card" style="padding: 2rem; margin-bottom: 2rem;" data-aos="fade-up">
+                        <h3 class="mb-lg"><i class="fas fa-user" style="color: var(--gold-light);"></i>
+                            {% trans "Contact Information" %}</h3>
+
+                        <div class="grid grid-cols-2 gap-md">
+                            <div class="form-group">
+                                <label class="form-label">{% trans "Full Name" %} *</label>
+                                <input type="text" name="customer_name" class="form-control" required
+                                    value="{{ user.get_full_name }}">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">{% trans "Email" %} *</label>
+                                <input type="email" name="customer_email" class="form-control" required
+                                    value="{{ user.email }}">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">{% trans "Phone (with country code)" %} *</label>
+                                <input type="tel" name="customer_phone" class="form-control" placeholder="+1234567890"
+                                    required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">{% trans "Company" %}</label>
+                                <input type="text" name="company_name" class="form-control">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card" style="padding: 2rem; margin-bottom: 2rem;" data-aos="fade-up"
+                        data-aos-delay="100">
+                        <h3 class="mb-lg"><i class="fas fa-map-marker-alt" style="color: var(--gold-light);"></i>
+                            {% trans "Shipping Address" %}</h3>
+
+                        <div class="form-group">
+                            <label class="form-label">{% trans "Country" %} *</label>
+                            <input type="text" name="country" class="form-control" required>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-md">
+                            <div class="form-group">
+                                <label class="form-label">{% trans "City" %} *</label>
+                                <input type="text" name="city" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">{% trans "Postal Code" %}</label>
+                                <input type="text" name="postal_code" class="form-control">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">{% trans "Full Address" %} *</label>
+                            <textarea name="shipping_address" class="form-control" rows="3" required
+                                placeholder="{% trans 'Street address, building, floor, etc.' %}"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="card" style="padding: 2rem; margin-bottom: 2rem;" data-aos="fade-up"
+                        data-aos-delay="200">
+                        <h3 class="mb-lg"><i class="fas fa-clipboard" style="color: var(--gold-light);"></i>
+                            {% trans "Additional Notes" %}</h3>
+
+                        <div class="form-group">
+                            <label class="form-label">{% trans "Order Notes" %}</label>
+                            <textarea name="notes" class="form-control" rows="3"
+                                placeholder="{% trans 'Any special instructions for your order...' %}"></textarea>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-lg w-full" data-aos="fade-up" data-aos-delay="300">
+                        <i class="fas fa-check"></i> {% trans "Place Order" %}
+                    </button>
+                </form>
+            </div>
+
+            <!-- Order Summary -->
+            <div style="flex: 1; min-width: 300px;">
+                <div class="card card-glass" style="padding: 2rem; position: sticky; top: 100px;" data-aos="fade-left">
+                    <h3 class="mb-lg">{% trans "Order Summary" %}</h3>
+
+                    {% for item in cart.items.all %}
+                    <div class="flex justify-between mb-md"
+                        style="padding-bottom: 0.75rem; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                        <div>
+                            <p style="font-size: 0.9rem;">{{ item.product.name|truncatewords:5 }}</p>
+                            <p style="color: var(--text-muted); font-size: 0.8rem;">
+                                {{ item.quantity }} × {{ item.product.price_rmb }}</p>
+                        </div>
+                        <span style="font-weight: 600;">¥{{ item.get_total }}</span>
+                    </div>
+                    {% endfor %}
+
+                    <div class="flex justify-between mt-lg"
+                        style="padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.1);">
+                        <span style="font-weight: 600; font-size: 1.1rem;">{% trans "Total" %}:</span>
+                        <span style="font-weight: 700; font-size: 1.25rem; color: var(--gold-light);">
+                            ¥{{ cart.get_total }}</span>
+                    </div>
+
+                    <div class="alert alert-info mt-lg" style="font-size: 0.85rem;">
+                        <i class="fas fa-info-circle"></i> 
+                        {% trans "After placing your order, you'll receive an Excel order sheet and can complete payment via WhatsApp." %}
+                    </div>
+
+                    <a href="{% url 'orders:cart' %}" class="btn btn-ghost w-full mt-md">
+                        <i class="fas fa-arrow-left"></i> {% trans "Back to Cart" %}
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
