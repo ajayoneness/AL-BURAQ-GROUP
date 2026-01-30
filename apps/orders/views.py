@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import JsonResponse, FileResponse
 from django.views.decorators.http import require_POST
+from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.conf import settings
 from django.utils.translation import gettext as _
@@ -125,6 +126,7 @@ def remove_from_cart(request):
         }, status=400)
 
 
+@login_required
 def checkout(request):
     """Checkout page"""
     cart = get_or_create_cart(request)
@@ -136,7 +138,7 @@ def checkout(request):
     if request.method == 'POST':
         # Create order
         order = Order.objects.create(
-            user=request.user if request.user.is_authenticated else None,
+            user=request.user,
             session_key=request.session.session_key or '',
             customer_name=request.POST.get('customer_name', ''),
             customer_email=request.POST.get('customer_email', ''),
