@@ -56,9 +56,28 @@
                 </div>
 
                 <div class="form-group">
-                    <label class="form-label">{% trans "Phone (with country code)" %}</label>
+                    <label class="form-label">{% trans "Phone (with country code)" %} *</label>
                     <input type="tel" name="phone" class="form-control" placeholder="+1234567890"
-                        value="{{ form.phone.value|default:'' }}">
+                        value="{{ form.phone.value|default:'' }}" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">{% trans "Country" %} *</label>
+                    <select name="country" class="form-control" required>
+                        <option value="">{% trans "Select your country" %}</option>
+                        <option value="Saudi Arabia" {% if form.country.value == "Saudi Arabia" %}selected{% endif %}>Saudi Arabia</option>
+                        <option value="UAE" {% if form.country.value == "UAE" %}selected{% endif %}>United Arab Emirates</option>
+                        <option value="Qatar" {% if form.country.value == "Qatar" %}selected{% endif %}>Qatar</option>
+                        <option value="Kuwait" {% if form.country.value == "Kuwait" %}selected{% endif %}>Kuwait</option>
+                        <option value="Bahrain" {% if form.country.value == "Bahrain" %}selected{% endif %}>Bahrain</option>
+                        <option value="Oman" {% if form.country.value == "Oman" %}selected{% endif %}>Oman</option>
+                        <option value="Jordan" {% if form.country.value == "Jordan" %}selected{% endif %}>Jordan</option>
+                        <option value="Egypt" {% if form.country.value == "Egypt" %}selected{% endif %}>Egypt</option>
+                        <option value="China" {% if form.country.value == "China" %}selected{% endif %}>China</option>
+                        <option value="India" {% if form.country.value == "India" %}selected{% endif %}>India</option>
+                        <option value="Nepal" {% if form.country.value == "Nepal" %}selected{% endif %}>Nepal</option>
+                        <option value="Other" {% if form.country.value == "Other" %}selected{% endif %}>Other</option>
+                    </select>
                 </div>
 
                 <div class="form-group">

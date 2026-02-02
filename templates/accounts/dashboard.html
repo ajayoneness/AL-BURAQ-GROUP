@@ -117,16 +117,16 @@
                                         <span style="color: var(--gold-light); font-weight: 600;">
                                             {{ order.order_number }}</span>
                                     </td>
-                                    <td style="padding: 1rem 0.5rem; color: var(--text-secondary);">{{
-                                        order.created_at|date:"M d, Y" }}</td>
+                                    <td style="padding: 1rem 0.5rem; color: var(--text-secondary);">
+                                        {{ order.created_at|date:"M d, Y" }}</td>
                                     <td style="padding: 1rem 0.5rem;">
                                         <span
                                             class="badge {% if order.status == 'completed' %}badge-success{% elif order.status == 'pending' %}badge-gold{% else %}badge-teal{% endif %}">
                                             {{ order.get_status_display }}
                                         </span>
                                     </td>
-                                    <td style="padding: 1rem 0.5rem; text-align: right; font-weight: 600;">¥{{
-                                        order.total_amount }}</td>
+                                    <td style="padding: 1rem 0.5rem; text-align: right; font-weight: 600;">
+                                        ¥{{ order.total_amount }}</td>
                                 </tr>
                                 {% endfor %}
                             </tbody>
