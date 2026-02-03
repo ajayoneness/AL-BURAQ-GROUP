@@ -1,0 +1,117 @@
+# AL BURAQ GROUP - International Trade & Logistics
+
+[AL BURAQ](http://127.0.0.1:8000/)
+- [الرئيسية](http://127.0.0.1:8000/)
+- [About Us](http://127.0.0.1:8000/about/)
+- [Services](http://127.0.0.1:8000/services/)
+- [Store](http://127.0.0.1:8000/store/)
+- [Tracking](http://127.0.0.1:8000/tracking/)
+- [FAQ](http://127.0.0.1:8000/faq/)
+- [Contact](http://127.0.0.1:8000/contact/)
+[الرئيسية](http://127.0.0.1:8000/)
+[About Us](http://127.0.0.1:8000/about/)
+[Services](http://127.0.0.1:8000/services/)
+[Store](http://127.0.0.1:8000/store/)
+[Tracking](http://127.0.0.1:8000/tracking/)
+[FAQ](http://127.0.0.1:8000/faq/)
+[Contact](http://127.0.0.1:8000/contact/)
+[0](http://127.0.0.1:8000/orders/cart/)
+[Login](http://127.0.0.1:8000/accounts/login/)
+
+# Your Gateway to Global Trade
+{% trans "Specialized in international trade, sourcing, and logistics from China to the world. Quality products, reliable shipping, exceptional service." %}
+[Browse Store](http://127.0.0.1:8000/store/)
+[Track Shipment](http://127.0.0.1:8000/tracking/)
+
+## Our Services
+Comprehensive trade and logistics solutions tailored to your needs
+
+#### Air Shipping
+{% trans "Fast and reliable air freight services for time-sensitive shipments worldwide." %}
+
+#### Sea Shipping
+Cost-effective sea freight solutions for bulk and large shipments.
+
+#### Land Shipping
+{% trans "Efficient rail and road transport connecting China to Central Asia and Europe." %}
+
+#### Sourcing
+{% trans "Expert product sourcing from verified Chinese manufacturers and suppliers." %}
+
+#### Quality Control
+Rigorous quality inspection to ensure products meet your standards.
+
+#### Packing & Assembly
+Professional packaging and assembly services for your products.
+
+#### الوثائق
+Complete customs clearance and documentation handling.
+
+#### 24/7 Support
+Dedicated support team available round the clock for assistance.
+[View All Services](http://127.0.0.1:8000/services/)
+
+## Product {% trans "Categories" %}
+Explore our wide range of wholesale products from China
+Categories coming soon...
+[Browse All Products](http://127.0.0.1:8000/store/)
+
+## Why Choose AL BURAQ?
+{% trans "With over 10 years of experience in international trade, we have built a reputation for reliability, quality, and exceptional customer service." %}
+
+##### Quality Guaranteed
+{% trans "Rigorous quality control on all products" %}
+
+##### Competitive Prices
+{% trans "Direct factory prices without middlemen" %}
+
+##### Global Shipping
+{% trans "Delivery to 50+ countries worldwide" %}
+
+##### Dedicated Support
+{% trans "Multilingual team available 24/7" %}
+
+#### Track Your Shipment
+Need help? Contact us directly:
+[WhatsApp](https://wa.me/8619557959148)
+[Email](mailto:alburaqgroupcn@gmail.com)
+
+## Our Offices
+Visit our offices in China for personalized service
+
+#### Yiwu - Branch 1
+Room 1218, Elevator No. 3, Hengfeng Jiacheng Office Building, Choujiang North Street, Fotian Street, Yiwu City
+[+86 19557959148](tel:+8619557959148)
+
+#### SHOW-ROOM
+Office, Room 3A01, 4th Floor, Building A, Futian Building, Yiwu City, Zhejiang Province, China
+[+86 19557959148](tel:+8619557959148)
+
+#### Guangzhou
+Unit 1902, East Tower, No. 59 Huali Road, Tianhe District, Guangzhou
+[+86 19557959148](tel:+8619557959148)
+
+## {% trans "Ready to Start Your Import Business?" %}
+{% trans "Join thousands of satisfied clients who trust AL BURAQ GROUP for their sourcing and logistics needs." %}
+[Create Account](http://127.0.0.1:8000/accounts/register/)
+[Contact Us](https://wa.me/8619557959148)
+Your trusted partner for international trade, sourcing, and logistics from China to the world.
+
+#### Quick Links
+[الرئيسية](http://127.0.0.1:8000/)
+[About Us](http://127.0.0.1:8000/about/)
+[Services](http://127.0.0.1:8000/services/)
+[Store](http://127.0.0.1:8000/store/)
+
+#### Services
+[Air Shipping](http://127.0.0.1:8000/)
+[Sea Shipping](http://127.0.0.1:8000/)
+[Land Shipping](http://127.0.0.1:8000/)
+[Sourcing](http://127.0.0.1:8000/)
+
+#### Contact Us
+[alburaqgroupcn@gmail.com](mailto:alburaqgroupcn@gmail.com)
+[+8619557959148](tel:+8619557959148)
+[WhatsApp](https://wa.me/8619557959148)
+© 2026 AL BURAQ GROUP. All rights reserved.
+Made with ❤ in China
