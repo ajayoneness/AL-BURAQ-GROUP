@@ -1,4 +1,4 @@
-@logo.jpeg 
+@logo.png 
 
 AL BURAQ GROUP – Website Project Description & Instructions
 

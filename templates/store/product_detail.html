@@ -87,8 +87,8 @@
         <nav>
             <a href="{% url 'store:category_list' %}" style="color: var(--text-secondary);">{% trans "Store" %}</a>
             <span style="color: var(--text-muted); margin: 0 0.5rem;">/</span>
-            <a href="{% url 'store:category_detail' product.category.slug %}" style="color: var(--text-secondary);">{{
-                product.category.name }}</a>
+            <a href="{% url 'store:category_detail' product.category.slug %}" style="color: var(--text-secondary);">
+                {{ product.category.name }}</a>
             <span style="color: var(--text-muted); margin: 0 0.5rem;">/</span>
             <span style="color: var(--gold-light);">{{ product.name|truncatewords:5 }}</span>
         </nav>
@@ -222,8 +222,8 @@
                 <div class="card-body">
                     <h5 style="font-size: 0.95rem; margin-bottom: 0.5rem;">{{ prod.name|truncatewords:6 }}</h5>
                     <span style="color: var(--gold-light); font-weight: 700;">¥{{ prod.price_rmb }}</span>
-                    <a href="{% url 'store:product_detail' prod.slug %}" class="btn btn-ghost btn-sm w-full mt-md">{%
-                        trans "View" %}</a>
+                    <a href="{% url 'store:product_detail' prod.slug %}" class="btn btn-ghost btn-sm w-full mt-md">
+                        {% trans "View" %}</a>
                 </div>
             </div>
             {% endfor %}
