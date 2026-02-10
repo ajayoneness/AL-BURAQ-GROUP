@@ -3,6 +3,8 @@
  * Interactive functionality and cart management
  */
 
+// doing some changes for server tessting
+
 // Cart functionality
 const Cart = {
     async add(productId, quantity = 1) {
