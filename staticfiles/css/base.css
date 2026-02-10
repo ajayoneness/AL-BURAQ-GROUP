@@ -882,6 +882,7 @@ select.form-control {
         transition: transform var(--transition-base);
         overflow-y: auto;
         border-top: 1px solid rgba(255, 255, 255, 0.1);
+        height: 100vh;
     }
     
     [dir="rtl"] .navbar-nav {

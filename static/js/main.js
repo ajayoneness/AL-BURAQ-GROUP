@@ -3,7 +3,7 @@
  * Interactive functionality and cart management
  */
 
-// doing some changes for server tessting
+// doing some changes for server testing
 
 // Cart functionality
 const Cart = {
